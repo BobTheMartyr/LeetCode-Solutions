@@ -1,7 +1,21 @@
 var twoSum = function(nums, target) {
     for( let i = 0; i < nums.length; i++ ){
-        if( nums.slice(i, i+2).reduce((total, current) => total + current) === target ){
-            return [i, i + 1]
+        for( let j = i + 1; j < nums.length; j++ ){
+            if( nums[i] + nums[j] === target ){
+                return [i, j]
+            }
+        }
+    }
+};
+
+
+
+//Second solution - SLOWER
+var twoSum = function(nums, target) {
+    for( let i = 0; i < nums.length; i++ ){
+        let tempTotal = nums.indexOf(target - nums[i])
+        if( tempTotal != -1 && tempTotal != i ){
+            return [i, tempTotal]
         }
     }
 };
