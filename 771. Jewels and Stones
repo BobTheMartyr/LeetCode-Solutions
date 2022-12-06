@@ -6,3 +6,39 @@ var numJewelsInStones = function(jewels, stones) {
     }
     return matches
 };
+
+
+//Second solution - slower but less memory taken
+
+var numJewelsInStones = function(jewels, stones){
+    let matches = 0
+    for( let char in stones ){
+        if( jewels.includes(stones[char]) ){
+            matches += 1
+        }
+    }
+    return matches
+}
+
+
+//Third solution - worst
+
+var numJewelsInStones = function(jewels, stones){
+    let charMap = {}
+    
+    for( let char in stones ){
+        if( charMap[stones[char]] ){
+            charMap[stones[char]]++
+        } else {
+            charMap[stones[char]] = 1
+        }
+    }
+
+    let total = 0
+
+    for( let char in jewels ){
+        charMap[jewels[char]] ? total += charMap[jewels[char]] : total += 0
+    }
+
+    return total
+}
