@@ -1,0 +1,8 @@
+var numJewelsInStones = function(jewels, stones) {
+    let matches = 0
+        for( let char in jewels.split('') ){
+            let regex = new RegExp(jewels[char], 'g')
+            stones.match(regex) != null ? matches += stones.match(regex).length : matches += 0
+    }
+    return matches
+};
