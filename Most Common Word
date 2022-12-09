@@ -1,0 +1,27 @@
+var mostCommonWord = function(paragraph, banned) {
+    
+    let newParagraph = paragraph.toLowerCase().split(' ').map(el => el.replace(/\W/g, '')).filter(el => !banned.includes(el))     //removes punctuation and the banend word            
+    
+    let wordMap = {}
+
+    for( let word in newParagraph ){
+        if( wordMap[newParagraph[word]] ){
+            wordMap[newParagraph[word]]++
+        } else {
+            wordMap[newParagraph[word]] = 1
+        }
+    }
+
+    let max = 0
+    let maxWord;
+
+    for( let word in wordMap ){
+        if( wordMap[word]  > max){
+            max = wordMap[word]
+            maxWord = word
+        }
+    }
+
+    return maxWord
+
+};
