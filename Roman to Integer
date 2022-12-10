@@ -1,0 +1,80 @@
+var romanToInt = function(s){
+
+    const numeralMap = {
+        "I": 1,
+        "IV": 4,
+        "V": 5,
+        "IX": 9,
+        "X": 10,
+        "XL": 40,
+        "L": 50,
+        "XC": 90,
+        "C": 100,
+        "CD": 400,
+        "D": 500,
+        "CM": 900,
+        "M": 1000
+    }
+
+    s = s.split('')
+
+    let total = 0
+    let i = 0
+
+    while ( i < s.length ){
+        if( numeralMap[s[i] + s[i + 1]] ){
+            total += numeralMap[s[i] + s[i + 1]]
+            i += 2
+        } else {
+            total += numeralMap[s[i]]
+            i++
+        }
+    }
+    return total
+}
+
+
+
+
+
+//This is REAL bad
+
+
+var romanToInt = function(s) {
+    
+    const numeralMap = {
+        "I": 1,
+        "V": 5,
+        "X": 10,
+        "L": 50,
+        "C": 100,
+        "D": 500,
+        "M": 1000
+    }
+    
+    s = s.split('')
+
+    let total = 0
+
+    for( let i = 0; i < s.length; i++ ){
+        if( s[i] === 'C' && s[i + 1] === "D" || s[i] === 'C' && s[i + 1] === "M" ){
+            total += (numeralMap[s[i + 1]] - numeralMap[s[i]])
+            i += 2
+            console.log(total)
+        }
+        if( s[i] === 'X' && s[i + 1] === "L" || s[i] === 'X' && s[i + 1] === "C" ){
+            total += (numeralMap[s[i + 1]] - numeralMap[s[i]])
+            i += 2
+            console.log(total)
+        }
+        if( s[i] === 'I' && s[i + 1] === "V" || s[i] === 'I' && s[i + 1] === "X" ){
+            total += (numeralMap[s[i + 1]] - numeralMap[s[i]])
+            console.log(total)
+            i += 2
+        } else {
+            numeralMap[s[i]] != undefined ? total += numeralMap[s[i]] : total += 0
+            console.log(total)
+        }
+    }
+    return total
+};
