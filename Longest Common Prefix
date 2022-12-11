@@ -17,3 +17,20 @@ var longestCommonPrefix = function(strs) {
     
     return prefix;
 };
+
+//Passes the test cases but not the submit case
+
+var longestCommonPrefix = function(strs){
+
+    if( !strs.length ){return ''}
+
+    let prefix = ''
+    let firstWord = strs[0]
+
+    for( let i = 0; i < firstWord.length; i++ ){
+        prefix = firstWord.slice(0, i+1)
+        if( strs.filter((el, i, arr) => !arr[i].startsWith(prefix)).length > 0 ){
+            return firstWord.slice(0, i)
+        }
+    }
+}
