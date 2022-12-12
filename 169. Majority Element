@@ -22,3 +22,21 @@ var majorityElement = function(nums) {
 
     return Number(majorityEle)
 };
+
+
+//Second solution - slightly faster - uses find method to determine majority element instead of loop
+
+var majorityElement = function(nums) {
+    
+    let numMap = {}
+
+    for( let num in nums ){
+        if( numMap[nums[num]] ){
+            numMap[nums[num]]++
+        }else{
+            numMap[nums[num]] = 1
+        }
+    }
+
+    return Number(Object.keys(numMap).find(el => numMap[el] > nums.length/2))
+};
