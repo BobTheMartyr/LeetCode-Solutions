@@ -1,0 +1,19 @@
+var containsDuplicate = function(nums) {
+    return nums.filter((el, i, arr) => arr.indexOf(arr[i]) != arr.lastIndexOf(arr[i])).length > 0 ? true : false
+};
+
+// FASTER
+
+var containsDuplicate = function(nums){
+
+    let map = {}
+
+    for( let el in nums ){
+        if( map[nums[el]] ){
+            map[nums[el]]++
+        }else{
+            map[nums[el]] = 1
+        }
+    }
+
+    return Math.max(...Object.values(map)) > 1 ? true : false
