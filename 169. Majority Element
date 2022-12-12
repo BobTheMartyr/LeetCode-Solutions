@@ -1,0 +1,24 @@
+var majorityElement = function(nums) {
+    
+    let numMap = {}
+
+    for( let num in nums ){
+        if( numMap[nums[num]] ){
+            numMap[nums[num]]++
+        }else{
+            numMap[nums[num]] = 1
+        }
+    }
+
+    let majorityNum = 0
+    let majorityEle;
+
+    for( let num in numMap ){
+        if( numMap[num] > majorityNum ){
+            majorityNum = numMap[num]
+            majorityEle = num
+        }
+    }
+
+    return Number(majorityEle)
+};
