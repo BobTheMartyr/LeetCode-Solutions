@@ -1,0 +1,15 @@
+function twoSum(arr, sum){
+
+  let results = []
+  let numMap = {}
+
+  for( let num1 of arr ){
+    let num2 = sum - num1
+    if( numMap[num2] ){
+      results.push([num1, num2])
+    } else {
+      numMap[num1] = true
+    }  
+  }
+  return results
+}
