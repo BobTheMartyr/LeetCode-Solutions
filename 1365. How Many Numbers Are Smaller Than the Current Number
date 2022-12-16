@@ -1,0 +1,10 @@
+var smallerNumbersThanCurrent = function(nums) {
+    
+    let results = []
+
+    for( let i = 0; i < nums.length; i++ ){
+        results.push(nums.filter(el => el < nums[i]).length)
+    }
+    
+    return results
+};
