@@ -8,3 +8,24 @@ var smallerNumbersThanCurrent = function(nums) {
     
     return results
 };
+
+//Solution Two - faster, same memory-ish
+
+var smallerNumbersThanCurrent = function(nums){
+
+    let map = {}
+
+    for( let i = 0; i < nums.length; i++ ){
+        if( !map[nums[i]] ){
+            map[nums[i]] = nums.filter(el => el < nums[i]).length
+        }
+    }
+
+    let results = []
+
+    for( let i = 0; i < nums.length; i++ ){
+        results.push(map[nums[i]])
+    }
+
+    return results
+}
