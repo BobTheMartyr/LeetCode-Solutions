@@ -1,3 +1,20 @@
+//Much better
+
+const decodeMessage = (key, message) => {
+    const map = {}
+    let idx = 0
+
+    for( const c of key ){
+        if( c != ' ' && map[c] === undefined ){
+            map[c] = String.fromCharCode(idx + 97)
+            idx++
+        }
+    }
+    map[' '] = ' '
+    return message.split('').map(el => map[el]).join('')
+};
+
+
 //Wildly inefficient but it gets the job done
 
 var decodeMessage = function(key, message) {
