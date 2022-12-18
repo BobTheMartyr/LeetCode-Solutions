@@ -1,0 +1,35 @@
+//Wildly inefficient but it gets the job done
+
+var decodeMessage = function(key, message) {
+
+    //creates the map
+    let alphabet = Array.from(new Set(key.slice().toLowerCase().replace(/ */g, '').split('').sort()))
+    let alpha = {}
+
+    let newKey = key.slice().match(/[a-z]/g)
+        for( let letter in newKey ){
+        alpha[newKey[letter]] = true
+    }
+
+    let i = 0
+    while( i < alphabet.length ){
+        for( let letter in alpha ){
+            alpha[letter] = alphabet[i]
+            i++
+        }
+    }
+        console.log(alpha)
+    //reads the table and gathers the result
+
+    let result = ''
+
+    for( let i = 0; i < message.length; i++ ){
+        if( alpha[message[i]] ){
+            result += alpha[message[i]]
+        } else {
+            result += ' '
+        }
+    }
+
+    return result
+};
