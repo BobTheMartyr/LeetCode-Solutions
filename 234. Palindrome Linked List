@@ -1,0 +1,12 @@
+var isPalindrome = function(head) {
+    let values = []
+
+
+    while( head != null ){
+        values.push(head.val)
+        head = head.next
+    }
+   
+   return values.slice(0, values.length/2).join('') === values.slice(Math.ceil(values.length/2)).reverse().join('') 
+
+};
