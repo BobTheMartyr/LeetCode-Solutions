@@ -15,3 +15,12 @@ var checkIfPangram = function(sentence) {
     return !Object.values(alphabet).includes(false)
 
 };
+
+//Shorted but less efficient
+
+var checkIfPangram = function(sentence){
+
+    let alphabet = Array.from(new Set(sentence))
+    return alphabet.length == 26 ? true : false
+
+}
