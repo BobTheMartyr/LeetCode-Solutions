@@ -1,0 +1,17 @@
+var checkIfPangram = function(sentence) {
+    let alphabet = {}
+    let idx = 97
+    let i = 0
+
+    while( i < 26 ){
+        alphabet[String.fromCharCode(idx + i)] = false
+        i++
+    }
+
+    for( const letter of sentence ){
+        alphabet[letter] = true
+    }
+
+    return !Object.values(alphabet).includes(false)
+
+};
