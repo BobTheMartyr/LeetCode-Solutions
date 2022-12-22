@@ -1,0 +1,7 @@
+var fib = function(n) {
+    let fib = [0,1]
+    while(fib.length <= n){
+        fib.push(fib[fib.length - 1] + fib[fib.length-2])
+    }
+    return n === 0 ? 0 : fib.pop()
+};
