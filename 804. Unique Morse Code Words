@@ -1,0 +1,16 @@
+var uniqueMorseRepresentations = function(words) {
+    
+    let alphabet = {}
+    let morseAlphabet = [".-","-...","-.-.","-..",".","..-.","--.","....","..",".---","-.-",".-..","--","-.","---",".--.","--.-",".-.","...","-","..-","...-",".--","-..-","-.--","--.."]
+    let idx = 0
+    while( idx < morseAlphabet.length ){
+        for( let el in morseAlphabet ){
+            alphabet[String.fromCharCode(idx+97)] = morseAlphabet[el]
+            idx++
+        }
+    }
+
+    let newWords = words.map(el => el.split('').map(el => el = alphabet[el]).join(''))
+    return Array.from(new Set(newWords)).length
+
+};
