@@ -1,0 +1,10 @@
+var getDecimalValue = function(head) {
+    let nums = []
+
+    while( head ){
+        nums.push(head.val)
+        head = head.next
+    }
+    
+    return parseInt(nums.join(''), 2)
+};
