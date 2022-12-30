@@ -1,0 +1,14 @@
+var countConsistentStrings = function(allowed, words) {
+    let results = 0
+
+    for( let i = 0; i < words.length; i++ ){
+        letterLoop:
+        for( let j = 0; j < words[i].length; j++ ){
+            if( !allowed.includes(words[i][j]) ){
+                results++
+                break letterLoop
+            }
+        }
+    }
+    return words.length - results
+};
