@@ -1,3 +1,16 @@
+//Third solution - slightly slower than second but less space intensive
+
+var sortPeople = function(names, heights) {
+    let personMap = new Map()
+    for( let person in names ){
+        personMap.set(heights[person], names[person])
+    }
+    heights.sort((a,b) => b - a)
+    return heights.map(el => personMap.get(el))
+};
+
+
+
 //Second solution - faster but more space intensive
 
 var sortPeople = function(names, heights) {
@@ -14,6 +27,7 @@ var sortPeople = function(names, heights) {
 };
 
 
+//First solution - Brute force to make it work
 
 var sortPeople = function(names, heights){
 
