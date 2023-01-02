@@ -1,3 +1,20 @@
+//Second solution - faster but more space intensive
+
+var sortPeople = function(names, heights) {
+    let personMap = new Map()
+    for( let person in names ){
+        personMap.set(heights[person], names[person])
+    }
+
+    let results = []
+    for( let height in heights.sort((a,b) => b - a) ){
+        results.push(personMap.get(heights[height]))
+    }
+    return results
+};
+
+
+
 var sortPeople = function(names, heights){
 
     let combination = []
