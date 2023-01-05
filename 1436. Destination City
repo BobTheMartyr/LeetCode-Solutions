@@ -1,0 +1,16 @@
+// Runtime 103 ms Beats 41.13% || Memory 43 MB Beats 91.70%
+
+var destCity = function(paths) {
+    let current;
+    let next;
+    let i = 0
+    
+    while( i <= paths.length ){
+        current = paths[i]
+        next = paths.find(el => el[0] === current[1])
+        if(next === undefined){
+            return current[1]
+        }
+    i++
+    }
+};
