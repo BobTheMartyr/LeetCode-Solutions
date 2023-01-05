@@ -14,3 +14,22 @@ var destCity = function(paths) {
     i++
     }
 };
+
+
+//Runtime 113 ms Beats 25.28% || Memory 43.7 MB Beats 83.40%
+
+var destCity = function(paths) {
+
+    let destArr = []
+    destArr.push(paths[0][0], paths[0][1])
+    let i = 0;
+    while( i < paths.length ){
+        let next = paths.find(el => el[0] === destArr[destArr.length-1])
+        if( next == undefined ){
+            return destArr[destArr.length - 1]
+        }else{
+            destArr.push(next[1])
+        }
+        i++
+    }
+}
