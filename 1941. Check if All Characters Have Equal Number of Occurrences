@@ -1,0 +1,13 @@
+var areOccurrencesEqual = function(s) {
+    let objMap = {}
+    for( let letter of s ){
+        if( objMap[letter] ){
+            objMap[letter]++
+        } else {
+            objMap[letter] = 1        
+        }
+    }
+
+    let result = Object.values(objMap).sort((a,b) => a - b)
+    return result[0] === result[result.length - 1]
+};
