@@ -1,3 +1,5 @@
+Runtime 69 ms Beats 90.67% || Memory 44.4 MB Beats 35.20%
+
 var areOccurrencesEqual = function(s) {
     let objMap = {}
     for( let letter of s ){
