@@ -1,0 +1,19 @@
+//Runtime 103 ms Beats 59.2% ||  Memory 49.8 MB Beats 7.52%
+
+var repeatedNTimes = function(nums) {
+    
+    let numMap = {}
+    for( let n of nums ){
+        if( numMap[n] ){
+            numMap[n] ++
+        } else {
+            numMap[n] = 1
+        }
+    }
+
+    for( let item in numMap ){
+        if( numMap[item] === nums.length/2 ){
+            return item
+        }
+    }
+};
