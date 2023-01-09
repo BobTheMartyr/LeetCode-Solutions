@@ -15,6 +15,21 @@ var repeatedCharacter = function(s) {
     return s[lowest]
 };
 
+//Runtime 72 ms Beats 63.30% || Memory 41.3 MB Beats 97.48%
+
+var repeatedCharacter = function(s) {
+
+    let chars = ''
+    for( let char of s ){
+        if( chars.includes(char) ){
+            return char
+        } else {
+            chars += char
+        }
+    }
+}
+
+
 // Runtime 66 ms Beats 78.83% || Memory 42.1 MB Beats 32.62%
 
 var repeatedCharacter = function(s){
