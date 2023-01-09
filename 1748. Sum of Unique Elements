@@ -1,0 +1,23 @@
+//Runtime 68 ms Beats 78.90% || Memory 42.6 MB Beats 31.43%
+
+var sumOfUnique = function(nums) {
+    let numObj = {}
+    let total = 0
+
+    for( let num of nums ){
+        if( numObj[num] ){
+            numObj[num]++
+        } else {
+            numObj[num] = 1
+        }
+    }
+
+    for( let item in numObj ){
+        if( numObj[item] === 1 ){
+            total += parseInt(item)
+        }
+    }
+
+    return total
+
+};
