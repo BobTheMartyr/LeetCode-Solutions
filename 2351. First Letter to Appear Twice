@@ -1,4 +1,4 @@
-Runtime 63 ms Beats 85.5% || Memory 42.2 MB Beats 32.62%
+// Runtime 63 ms Beats 85.5% || Memory 42.2 MB Beats 32.62%
 
 var repeatedCharacter = function(s) {
     
@@ -14,3 +14,19 @@ var repeatedCharacter = function(s) {
 
     return s[lowest]
 };
+
+// Runtime 66 ms Beats 78.83% || Memory 42.1 MB Beats 32.62%
+
+var repeatedCharacter = function(s){
+
+    let charObj = {}
+
+    for( let char of s ){
+        if( charObj[char] ){
+            return char
+        } else{
+            charObj[char] = true
+        }
+    }
+
+}
