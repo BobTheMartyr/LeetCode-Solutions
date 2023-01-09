@@ -1,3 +1,19 @@
+//Runtime 62 ms Beats 91.77% ||  Memory 41.3 MB Beats 99.58%
+
+var sumOfUnique = function(nums){
+
+    let total = 0
+
+    for( let num of nums ){
+        if( nums.indexOf(num) === nums.lastIndexOf(num) ){
+            total += num
+        }
+    }
+
+    return total
+}
+
+
 //Runtime 68 ms Beats 78.90% || Memory 42.6 MB Beats 31.43%
 
 var sumOfUnique = function(nums) {
