@@ -1,0 +1,15 @@
+Runtime 94 ms Beats 92.54% || Memory 48 MB Beats 92.11%
+
+var mergeSimilarItems = function(items1, items2) {
+    items1 = items1.concat(items2)
+    let itemObj = {}
+    for( let item of items1 ){
+        if( itemObj[item[0]] ){
+            itemObj[item[0]] += item[1]
+        } else {
+            itemObj[item[0]] = item[1]
+        }
+    }
+
+    return Object.entries(itemObj)    
+};
