@@ -1,3 +1,19 @@
+// Runtime 88 ms Beats 53.76% || Memory 43.7 MB Beats 94.36%
+
+var divideArray = function(nums){
+    nums = nums.sort((a,b) => a - b)
+    let total = 0
+
+    for( let i = 0; i < nums.length; i+=2 ){
+        if( nums[i] === nums[i + 1] ){
+        total++
+        }
+    }
+
+    return total === nums.length/2
+}
+
+
 // Runtime 78 ms Beats 68.80% || Memory 45 MB Beats 16.54%
   
   
