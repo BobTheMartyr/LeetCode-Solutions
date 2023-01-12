@@ -1,0 +1,14 @@
+// Runtime 78 ms Beats 68.80% || Memory 45 MB Beats 16.54%
+  
+  
+var divideArray = function(nums) {
+    let numMap = {}
+    for( let num of nums ){
+        if( numMap[num] ){
+            numMap[num]++
+        } else {
+            numMap[num] = 1
+        }
+    }
+    return Object.values(numMap).filter(el => el % 2 != 0).length > 0 ? false : true
+};
