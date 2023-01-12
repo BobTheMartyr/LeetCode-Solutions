@@ -1,0 +1,28 @@
+// Runtime 79 ms Beats 98.17% || Memory 50.1 MB Beats 68.81%
+
+var countBalls = function(lowLimit, highLimit) {
+    let results = []
+
+    while( lowLimit <= highLimit ){
+        let total = 0
+        let temp = lowLimit
+        while( temp > 9 ){
+            total += temp%10
+            temp = (temp - (temp%10)) / 10
+        }
+        results.push(total + temp)
+        lowLimit++
+    }
+    
+    let obj ={}
+
+    for( let num of results ){
+        if( obj[num] ){
+            obj[num]++
+        } else {
+            obj[num] = 1
+        }
+    }
+
+    return Math.max(...Object.values(obj))
+};
