@@ -1,3 +1,5 @@
+Runtime 67 ms Beats 82.38% || Memory 42 MB Beats 86.34%
+
 var maxProduct = function(nums) {
     
     let max = 0
