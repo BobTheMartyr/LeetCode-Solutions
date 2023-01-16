@@ -1,0 +1,15 @@
+// Runtime 61 ms Beats 94.80% || Memory 43.4 MB Beats 27.63%
+
+var uniqueOccurrences = function(arr) {
+    let occurrences = {}
+
+    for( let num of arr ){
+        if( occurrences[num] ){
+            occurrences[num] += 1
+        } else {
+            occurrences[num] = 1
+        }
+    }
+
+    return Array.from(new Set(Object.values(occurrences))).length === Object.values(occurrences).length
+};
