@@ -1,0 +1,13 @@
+// Runtime 57 ms Beats 94.61% || Memory 42.6 MB Beats 48.50%
+
+var digitCount = function(num) {
+    num = num.split('').map(el => Number(el))
+
+    for( let i = 0; i < num.length; i++ ){
+        if( num.filter(el => el === i).length != num[i] ){
+            return false
+        }
+    }
+    
+    return true
+};
