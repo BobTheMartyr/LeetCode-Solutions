@@ -1,0 +1,19 @@
+//Runtime 96 ms Beats 39.41% || Memory 49.8 MB Beats 5.42%
+
+var twoOutOfThree = function(nums1, nums2, nums3) {
+    
+    let groupArr = [[...nums1], [...nums2], [...nums3]].map(el => new Set(el)).map(el => Array.from(el))
+    groupArr = [...groupArr[0], ...groupArr[1], ...groupArr[2]]
+    
+    let map = {}
+    let result = []
+    for( let num of groupArr ){
+        if( map[num] && !result.includes(num) ){
+            result.push(num)
+        } else {
+            map[num] = true
+        }
+    }
+    
+    return result
+};
