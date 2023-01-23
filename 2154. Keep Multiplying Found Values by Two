@@ -1,3 +1,18 @@
+// Runtime 63 ms Beats 83.33% || Memory 44.4 MB Beats 8.33%
+
+var findFinalValue = function(nums, original){
+
+    let set = new Set(nums)
+    let result = original
+
+    while( set.has(result) ){
+        result *= 2
+    }
+
+    return result
+}
+
+
 // Runtime 89 ms Beats 30.43% || Memory 42.6 MBBeats 48.91%
 
 var findFinalValue = function(nums, original) {
