@@ -1,3 +1,21 @@
+// Runtime 75 ms Beats 87.68% || Memory 44.3 MB Beats 83.25%
+
+var twoOutOfThree = function(nums1, nums2, nums3) {
+    let set = new Set(nums1), res = new Set();
+    nums1 = new Set();
+    
+    for(let num of nums2) {
+        if(set.has(num)) res.add(num);
+        nums1.add(num);
+    }
+    
+    for(let num of nums3) {
+        if(set.has(num) || nums1.has(num)) res.add(num);
+    }
+    
+    return [...res];
+};
+
 //Runtime 96 ms Beats 39.41% || Memory 49.8 MB Beats 5.42%
 
 var twoOutOfThree = function(nums1, nums2, nums3) {
