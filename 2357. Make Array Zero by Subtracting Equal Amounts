@@ -1,0 +1,15 @@
+// Runtime 123 ms Beats 9.94% || Memory 43.8 MB Beats 24.64%
+
+var minimumOperations = function(nums) {
+    
+    let newNums = nums.slice().sort((a,b) => b - a)
+    let operations = 0
+
+    while( newNums[0] > 0 ){
+        operations += 1
+        let min = Math.min(...newNums.filter(el => el > 0))
+        newNums = newNums.map(el => el > 0 ? el - min : 0)
+    }
+
+    return operations
+};
