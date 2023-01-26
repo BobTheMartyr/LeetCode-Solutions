@@ -1,0 +1,22 @@
+// Runtime 87 ms Beats 41.31% || Memory 48.4 MB Beats 5.33%
+
+var nextGreaterElement = function(nums1, nums2) {
+    let results = []
+
+    for( let i = 0; i < nums1.length; i++ ){
+        let temp = nums2.slice(nums2.indexOf(nums1[i]) + 1)
+        if( Math.max(...temp) < nums1[i] ){
+            results.push(-1)
+        } else {
+            innerLoop: 
+            for( let j = 0; j < temp.length; j++ ){
+            if( temp[j] > nums1[i] ){
+                results.push(temp[j])
+                test = true
+                break innerLoop
+                } 
+            }
+        }
+    }
+    return results
+};
