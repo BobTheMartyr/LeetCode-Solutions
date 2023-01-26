@@ -1,0 +1,5 @@
+// Runtime 83 ms Beats 57.35% || Memory 44.5 MB Beats 37.75%
+
+var canBeEqual = function(target, arr) {
+    return target.sort().join('') === arr.sort().join('')
+};
