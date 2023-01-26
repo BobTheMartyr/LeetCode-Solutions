@@ -1,3 +1,30 @@
+//Runtime 78 ms Beats 76.92% || Memory 46 MB Beats 37.56%
+
+var kthDistinct = function(arr, k){
+
+    let list = new Map()
+    for( let el of arr ){
+        if( list.get(el) ){
+            list.set(el, list.get(el) + 1)
+        } else {
+            list.set(el, 1)
+        }
+    }
+
+    let i = 0
+    for( let [key, value] of list ){
+        if( value === 1 ){
+            i++
+        }
+        if( i === k ){
+            return key
+        }
+    }
+
+    return ""
+
+}
+
 //Runtime 88 ms Beats 54.75% || Memory 47.7 MB Beats 17.65%
 
 var kthDistinct = function(arr, k) {
