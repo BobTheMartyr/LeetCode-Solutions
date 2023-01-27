@@ -1,0 +1,23 @@
+// Runtime 82 ms Beats 41.10% || Memory 41.9 MB Beats 96.58%
+
+var canBeTypedWords = function(text, brokenLetters) {
+    let letters = new Set()
+    for( let el of brokenLetters ){
+        letters.add(el)
+    }
+
+    text = text.split(' ')
+    let words = text.length
+    for( let i = 0; i < text.length; i++ ){
+        for( let j = 0; j < text[i].length; j++ ){
+            if( letters.has(text[i][j]) ){
+                words--
+                if( words === 0 ){
+                    return words
+                }
+                break
+            }
+        }
+    }
+    return words
+};
