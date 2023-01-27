@@ -1,0 +1,25 @@
+//Runtime 176 ms Beats 10.24% || Memory 45.1 MB Beats 80.12%
+
+var countWords = function(words1, words2) {
+    
+    let combo = []
+    for( let el of words1 ){
+        if( words1.indexOf(el) === words1.lastIndexOf(el) ){
+            combo.push(el)
+        }
+    }
+    for( let el of words2 ){
+        if( words2.indexOf(el) === words2.lastIndexOf(el) ){
+            combo.push(el)
+        }
+    }
+
+    let result = 0
+    for( let el of combo ){
+        if( combo.indexOf(el) != combo.lastIndexOf(el) ){
+            result++
+        }
+    }
+    
+    return result / 2
+};
