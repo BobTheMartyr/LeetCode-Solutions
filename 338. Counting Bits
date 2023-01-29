@@ -1,0 +1,13 @@
+//Runtime 116 ms Beats 53.65% || Memory 53.8 MB Beats18.45%
+
+var countBits = function(n) {
+    
+    let counter = 0
+    let results = []
+    while( counter <= n ){
+        results.push(counter.toString(2).split('').filter(el => el === '1').length)
+        counter++
+    }
+
+    return results
+};
