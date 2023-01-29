@@ -1,4 +1,4 @@
-//Runtime 116 ms Beats 53.65% || Memory 53.8 MB Beats18.45%
+//Runtime 116 ms Beats 53.65% || Memory 53.8 MB Beats 18.45%
 
 var countBits = function(n) {
     
@@ -11,3 +11,13 @@ var countBits = function(n) {
 
     return results
 };
+
+//Runtime 137 ms Beats 38.95% || Memory 53.7 MB Beats 20.60%
+
+var countBits = function(n){
+    let results = []
+    for( let i = 0; i <= n; i++ ){
+        results.push(i.toString(2).replace(/0/g, "").length)
+    }
+    return results
+}
