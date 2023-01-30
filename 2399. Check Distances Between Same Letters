@@ -1,0 +1,19 @@
+//Runtime 67 ms Beats 93.46% || Memory 44.6 MB Beats 37.50%
+
+
+var checkDistances = function(s, distance) {
+    
+    let map = {}
+    for( let i = 0; i < distance.length; i++ ){
+        map[String.fromCharCode(i + 97)] = distance[i]
+    }
+    
+    let bleh = Array.from(new Set(s))
+
+    for( let i = 0; i < bleh.length; i++ ){
+        if( s.slice(s.indexOf(bleh[i]), s.lastIndexOf(bleh[i])).length - 1 != map[bleh[i]] ){
+            return false
+        }
+    }
+    return true
+};
