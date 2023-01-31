@@ -1,0 +1,15 @@
+// Runtime 69 ms Beats 69.77% || Memory 43.8 MB Beats 35.79%
+
+
+var intersection = function(nums1, nums2) {
+    let num1Set = new Set(nums1)
+    
+    let result = []
+    for( let el of nums2 ){
+        if( num1Set.has(el) ){
+            result.push(el)
+        }
+    }
+
+    return Array.from(new Set(result))
+};
