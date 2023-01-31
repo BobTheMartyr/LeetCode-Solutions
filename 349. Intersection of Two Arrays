@@ -1,5 +1,11 @@
-// Runtime 69 ms Beats 69.77% || Memory 43.8 MB Beats 35.79%
+// Runtime 65 ms Beats 81.96% || Memory 42.3 MB Beats 83.49%
 
+var intersection = function(nums1, nums2){
+    return Array.from(new Set(nums1.filter(el => nums2.includes(el))))
+}
+
+
+// Runtime 69 ms Beats 69.77% || Memory 43.8 MB Beats 35.79%
 
 var intersection = function(nums1, nums2) {
     let num1Set = new Set(nums1)
