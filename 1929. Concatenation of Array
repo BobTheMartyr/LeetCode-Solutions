@@ -1,0 +1,5 @@
+// Runtime 78 ms Beats 82.49% || Memory 45.1 MB Beats 65.62%
+
+var getConcatenation = function(nums) {
+    return nums.concat(nums)
+}; 
