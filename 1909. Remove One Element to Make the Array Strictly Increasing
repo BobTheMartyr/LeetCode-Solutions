@@ -1,0 +1,18 @@
+//Runtime 104 ms Beats 33.33% || Memory 50 MB Beats 5.29%
+
+var canBeIncreasing = function(nums){
+
+    let results = []
+    for( let i = 0; i < nums.length; i++ ){
+        let temp = nums.slice()
+        temp.splice(i, 1)
+        for( let j = 0; j < temp.length; j++){
+            if( (temp[j] - temp[j + 1]) >= 0 ){
+                results.push(false)
+                break
+            }
+        }
+    }
+
+    return results.length < nums.length ? true : false
+};
