@@ -1,0 +1,21 @@
+// Runtime 73 ms Beats 63.15% || Memory 43 MB Beats 74.61%
+
+var countGoodSubstrings = function(s) {
+    
+    if( s.length < 3 ){return 0}
+    
+    let badStrings = 0
+    
+    for( let i = 0; i < s.length - 2; i++ ){
+        let temp = s.slice(i, i + 3)
+        for( let j = 0; j < temp.length; j++ ){
+            if( temp.indexOf(temp[j]) != temp.lastIndexOf(temp[j]) ){
+                badStrings++
+                break
+            }
+        }
+
+    }
+
+    return (s.length - 2) - badStrings
+};
