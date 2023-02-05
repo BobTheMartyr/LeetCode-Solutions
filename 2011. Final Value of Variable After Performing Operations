@@ -1,0 +1,13 @@
+//Runtime 69 ms Beats 69% || Memory 43.3 MB Beats 21.55%
+
+var finalValueAfterOperations = function(operations) {
+    let x = 0
+    for( let el of operations ){
+        if( el.includes('+') ){
+            x++
+        } else {
+            x--
+        }
+    }
+    return x
+}
