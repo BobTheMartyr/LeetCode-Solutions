@@ -1,0 +1,26 @@
+// Runtime 95 ms Beats 58.48% || Memory 45.9 MB Beats 74.27%
+
+var groupThePeople = function(groupSizes) {
+    let groups = {}
+
+    for( let el in groupSizes ){
+        if( groups[groupSizes[el]] ){
+            groups[groupSizes[el]].push(Number(el))
+        } else {
+            groups[groupSizes[el]] = [Number(el)]
+        }
+    }
+
+    let splitGroups = Array.from(Object.entries(groups))
+    let result = []
+
+    for( let i = 0 ; i < splitGroups.length; i++ ){
+        for( let j = 0; j < splitGroups[i][1].length; j++ ){
+            while( splitGroups[i][1].length > 0 ){
+                result.push( splitGroups[i][1].splice(0, Number(splitGroups[i][0])) )
+            }
+        }
+    }
+
+    return result
+};
