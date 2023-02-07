@@ -1,0 +1,15 @@
+//Runtime 121 ms Beats 74.47% || Memory 49.1 MB Beats 48.49%
+
+var similarPairs = function(words) {
+    let sortedLetters = words.map(el => new Set(el)).map(el => Array.from(el).sort().join(''))
+
+    let count = 0
+    for( let i = 0; i < sortedLetters.length; i++ ){
+        for( let j = i + 1; j < sortedLetters.length; j++ ){
+            if( sortedLetters[i] === sortedLetters[j] ){
+                count++
+            }
+        }
+    }
+    return count
+};
