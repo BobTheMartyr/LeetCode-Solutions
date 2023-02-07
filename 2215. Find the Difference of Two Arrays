@@ -1,0 +1,9 @@
+// Runtime 85 ms Beats 97.45% || Memory 48 MB Beats 75.18%
+
+var findDifference = function(nums1, nums2) {
+    let nums1Map = new Set(nums1)
+    let nums2Map = new Set(nums2)
+
+    return [ Array.from(nums1Map).filter(el => !nums2Map.has(el)), Array.from(nums2Map).filter(el => !nums1Map.has(el)) ]
+
+};
