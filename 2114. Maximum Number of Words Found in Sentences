@@ -1,0 +1,5 @@
+// Runtime 58 ms Beats 95.57% || Memory 44 MB Beats 53.60%
+
+var mostWordsFound = function(sentences) {
+    return Math.max(...sentences.map(el => el.split(' ').length))
+};
