@@ -1,0 +1,22 @@
+//Runtime 63 ms Beats 68.50% || Memory 41.9 MB Beats 58.15%
+
+var middleNode = function(head) {
+    
+    let count = 0
+    let temp = head
+    
+    while( temp ){
+        count++
+        temp = temp.next
+    }
+    
+    let newCount = 0
+    while( head ){
+        newCount++
+        if( newCount === Math.floor(count/2) + 1 ){
+            return head
+        }
+        head = head.next
+    }
+
+};
