@@ -1,0 +1,43 @@
+// Runtime 58 ms Beats 85.78% || Memory 42.4 MB Beats 7.67%
+
+var findWords = function(words) {
+    let boardMap = {
+        'a': 2,
+        'b': 3,
+        'c': 3,
+        'd': 2,
+        'e': 1,
+        'f': 2,
+        'g': 2,
+        'h': 2,
+        'i': 1,
+        'j': 2,
+        'k': 2,
+        'l': 2,
+        'm': 3,
+        'n': 3,
+        'o': 1,
+        'p': 1,
+        'q': 1,
+        'r': 1,
+        's': 2,
+        't': 1,
+        'u': 1,
+        'v': 3,
+        'w': 1,
+        'x': 3,
+        'y': 1,
+        'z': 3  
+    }
+
+    let newArr = words.map(el => el.toLowerCase().split('').map(el => el = boardMap[el]))
+    let lengths = newArr.map(el => Array.from(new Set(el)).length)
+    let result = []
+    for( let i = 0; i < lengths.length; i++ ){
+        if( lengths[i] === 1 ){
+            result.push(words[i])
+        }
+    }
+
+    return result
+};
