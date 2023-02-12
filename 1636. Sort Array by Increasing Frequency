@@ -1,0 +1,46 @@
+//Runtime 93 ms Beats 34.44% || Memory 44.3 MB Beats 73.3%
+
+var frequencySort = function(nums) {
+    
+    //creates the map
+    let map = new Map()
+
+    for( let el of nums ){
+        if( map.get(el) ){
+            map.set(el, map.get(el) + 1)
+        } else {
+            map.set(el, 1)
+        }
+    }
+
+    let result = []
+    
+    //finds the maximum number of occurrences
+    let max = []
+    for( let [key, value] of map ){
+        max.push(value)
+    }
+
+    max = Math.max(...max)
+
+    //adds all values of occurrences i into an array, sorts it in descending order, then pushes it onto the result array
+    for( let i = 1; i <= max; i++ ){
+        let temp = []
+        for( let [key, value] of map ){
+            if( value === i ){
+                temp.push(key)
+            }
+        }
+        temp = temp.sort((a,b) => b - a)
+        for( let el of temp ){
+            let j = 0
+            while( j < i ){
+                result.push(el)
+                j++
+            }
+        }
+    }
+
+    return result
+
+};
