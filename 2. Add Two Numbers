@@ -1,0 +1,48 @@
+//Runtime 104 ms Beats 76.2% || Memory 46.4 MB Beats 95.52%
+
+var addTwoNumbers = function(l1, l2) {
+    
+    // Reference to the head of the new linked list
+    let head = null
+    // 
+    let temp = null
+    //Carry for addition
+    let carry = 0
+    
+    // Loop for the two lists
+    while( l1 || l2){
+        // At the start of each iteration, add the carry from the previous iteration
+        let sum = carry
+        // Since the lengths of the lists may be unequal, check if the current node is null for one of the lists
+        if( l1 ){
+            sum += l1.val
+            l1 = l1.next
+        }
+
+        if( l2 ){
+            sum += l2.val
+            l2 = l2.next
+        }
+
+        // Add the total sum % 10 to the results list
+        let node = new ListNode(Math.floor(sum) % 10)
+        // Carry to be added in the next iteration
+        carry = Math.floor(sum / 10)
+
+        // Check if this is the first node or head
+        if( temp === null ){
+            temp = head = node
+        } else {
+            temp.next = node
+            temp = temp.next
+        }
+    }
+
+    // After the last iteration, check if there is carry left and if there is we will create a new node for it
+
+    if( carry > 0 ){
+        temp.next = new ListNode(carry)
+    }
+    
+    return head
+};
