@@ -1,0 +1,9 @@
+// NOTE: TIME COMPLEXITY IS O(N LOG(N)) NOT O(LOG N)
+
+// Runtime 105 ms Beats 76.90% || Memory 47.7 MB Beats 47.19%
+
+
+var findMedianSortedArrays = function(nums1, nums2) {
+    nums1 = nums1.concat(nums2).sort((a,b) => a - b)
+    return nums1.length % 2 === 0 ? (nums1[nums1.length/2] + nums1[(nums1.length/2) - 1]) / 2 : nums1[Math.floor(nums1.length / 2)]
+};
