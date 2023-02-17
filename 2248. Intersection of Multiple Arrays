@@ -1,0 +1,23 @@
+//Runtime 79 ms Beats 48.8% || Memory 44.5 MB Beats 56.79%
+
+var intersection = function(nums) {
+    let map = new Map()
+
+    for( let i = 0; i < nums.length; i++ ){
+        for( let j = 0; j < nums[i].length; j++ ){
+            if( map.has(nums[i][j]) ){
+                map.set(nums[i][j], map.get(nums[i][j]) + 1)
+            } else {
+                map.set(nums[i][j], 1)
+            }
+        }
+    }
+
+    let result = []
+    for( let [key, value] of map ){
+        if( value === nums.length ){
+            result.push(key)
+        }
+    }
+    return result.sort((a,b) => a - b)
+};
