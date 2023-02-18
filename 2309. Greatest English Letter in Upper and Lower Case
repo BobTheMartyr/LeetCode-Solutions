@@ -1,0 +1,18 @@
+//Runtime 88 ms Beats 50% || Memory 46.3 MB Beats 31.34%
+
+var greatestLetter = function(s) {
+    let map = {}
+    for( let el in s ){
+        map[s.charCodeAt(el)] = s[el]
+    }
+    
+    let vals = Object.values(map)
+    let results = []
+    for( let el of vals ){
+        if( vals.includes(el.toUpperCase()) && el != el.toUpperCase() ){
+            results.push(el.toUpperCase())
+        }
+    }
+
+    return results.length > 0 ? results[results.length - 1] : ''
+};
