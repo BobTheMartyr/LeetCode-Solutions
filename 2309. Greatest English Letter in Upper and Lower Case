@@ -1,4 +1,20 @@
-//Runtime 88 ms Beats 50% || Memory 46.3 MB Beats 31.34%
+// Runtime 79 ms Beats 69.17% || Memory 44.4 MB Beats 70.68%
+
+var greatestLetter = function(s) {
+
+    let result = []
+    for( let el of s ){
+        if( s.includes(el.toUpperCase()) && el != el.toUpperCase() ){
+            result.push(el.toUpperCase())
+        }
+    }
+
+    return result.length > 0 ? result.sort()[result.length - 1] : ''
+}
+
+
+
+// Runtime 88 ms Beats 50% || Memory 46.3 MB Beats 31.34%
 
 var greatestLetter = function(s) {
     let map = {}
