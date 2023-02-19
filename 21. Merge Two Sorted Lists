@@ -1,0 +1,23 @@
+// Runtime 80 ms Beats 35.45% || Memory 44.8 MB Beats 9.76%
+
+var mergeTwoLists = function(list1, list2) {
+  let vals = []
+  while( list1 ){
+    vals.push(list1.val)
+    list1 = list1.next
+  }
+  while( list2 ){
+    vals.push(list2.val)
+    list2 = list2.next
+  }
+
+  vals = vals.sort((a,b) => a - b)
+
+  let head = tail = new ListNode()
+  for( let el in vals ){
+    head.next = new ListNode(vals[el])
+    head = head.next
+  }
+
+  return tail.next
+}
