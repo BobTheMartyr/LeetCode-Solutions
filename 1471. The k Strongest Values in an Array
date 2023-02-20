@@ -1,0 +1,10 @@
+// Runtime 385 ms Beats 22.97% || Memory 63.7 MB Beats 55.40%
+
+var getStrongest = function(arr, k) {
+    
+    let median = arr.sort((a,b) => a - b)[Math.floor((arr.length - 1) / 2)]
+    let newArr = arr.map(el => el - median).sort((a,b) => Math.abs(a) - Math.abs(b))
+
+    return newArr.map(el => el + median).slice(-k)
+
+};
