@@ -1,0 +1,12 @@
+// Runtime 74 ms Beats 62.30% || Memory 44.7 MB Beats 33.52%
+
+var shuffle = function(nums, n) {
+    
+    let last = nums.splice(n, nums.length)
+    let result = []
+    for( let i = 0; i < nums.length; i++ ){
+        result.push(nums[i], last[i])
+    }
+
+    return result
+};
