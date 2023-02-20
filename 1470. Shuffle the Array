@@ -10,3 +10,18 @@ var shuffle = function(nums, n) {
 
     return result
 };
+
+
+// SLOWER BUT LESS MEMORY
+// Runtime 75 ms Beat 55.96% || Memory 44.4 MB Beats 63.90%
+
+var shuffle = function(nums, n) {
+    
+    let last = nums.slice(n)
+    let result = []
+    for( let i = 0; i < n; i++ ){
+        result.push(nums[i], last[i])
+    }
+
+    return result
+};
