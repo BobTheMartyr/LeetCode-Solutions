@@ -1,0 +1,21 @@
+// Runtime 222 ms Beats 7.46% || Memory 51.1 MB Beats 37.85%
+
+var findRestaurant = function(list1, list2) {
+    
+    let common = list1.filter( el => list2.includes(el) )
+    
+    let map = new Map()
+    for( let el in common ){
+        map.set(common[el], list1.indexOf(common[el]) + list2.indexOf(common[el]) )
+    }
+
+
+    let result = [] 
+    for( let [key, value] of map ){
+        if( value === Math.min(...map.values()) ){
+            result.push( key )
+        }
+    }
+
+   return result
+};
