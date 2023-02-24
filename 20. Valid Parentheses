@@ -1,3 +1,58 @@
+// 10 ms faster, but uses .9 more MB of memory
+// Runtime 57 ms Beats 96.64% || Memory 43.8 MB Beats 11.87%
+
+var isValid = function(s){
+
+    if( s.length <= 1 ){
+        return false
+    }
+
+    let map = {
+        ')' : '(',
+        '}' : '{',
+        ']' : '['
+    }
+
+    let stack = new Stack()
+
+    for( let el of s ){
+        if( !map[el] ){
+            stack.push(el)
+        } else if( map[el] === stack.peek() ){
+            stack.pop()
+        } else {
+            return false
+        }
+    }
+    console.log(stack)
+    return stack.size > 0 ? false : true
+}
+
+
+class Stack{
+    constructor(){
+        this.stack = {}
+        this.size = 0
+    }
+
+    pop = function(){
+        let removed = this.stack[this.size]
+        delete this.stack[this.size]
+        this.size--
+    }
+
+    push = function(item){
+        this.size++
+        this.stack[this.size] = item
+    }
+
+    peek = function(){
+        return this.stack[this.size]
+    }
+}
+
+****************************************************************
+
 // Runtime 67 ms Beats 74.51% || Memory 42.9 MB Beats 29.92%
 
 var isValid = function(s) {
