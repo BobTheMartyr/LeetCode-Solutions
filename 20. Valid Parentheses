@@ -1,0 +1,28 @@
+// Runtime 67 ms Beats 74.51% || Memory 42.9 MB Beats 29.92%
+
+var isValid = function(s) {
+    
+    if(s.length <= 1){
+        return false
+    }
+    
+    let map = {
+        ')' : '(',
+        '}' : '{',
+        ']' : '['
+    }
+
+    let leftBrackets = []
+    for( let el of s ){
+        if ( !map[el] ){
+            leftBrackets.push(el)
+        } else if( map[el] === leftBrackets[leftBrackets.length - 1] ){
+            leftBrackets.pop()
+        } else {
+            return false
+        }
+    }
+
+    return leftBrackets.length ? false : true 
+
+};
