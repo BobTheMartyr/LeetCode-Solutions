@@ -1,5 +1,5 @@
 // Merge Sort
-// Runtime 1218 ms Beats 31.38% Memory 66.9 MB Beats 21.37%
+// Runtime 1218 ms Beats 31.38% || Memory 66.9 MB Beats 21.37%
 
 var sortArray = function(nums) {
     return mergeSort(nums)
@@ -32,4 +32,45 @@ let merge = function(left, right){
     }
 
     return [...sortedArr, ...left, ...right]
+}
+
+// Quick Sort
+// Runtime 6620 ms Beats 15.90% || Memory 66.6 MB Beats 22.66%
+
+var sortArray = function( nums ){
+    return quickSort(nums)
+}
+
+let quickSort = function( arr, start = 0, end = arr.length - 1 ){
+
+    if( start >= end ){ return arr }
+
+    let pivotIndex = partition(arr, start, end)
+
+    // Left
+    quickSort( arr, start, pivotIndex - 1 )
+    // Right
+    quickSort( arr, pivotIndex + 1, end )
+
+    return arr
+}
+
+let partition = function( arr, start, end ){
+
+    const pivotValue = arr[start]
+    let swapIndex = start
+
+    for( let i = start + 1; i <= end; i++ ){
+        if( pivotValue > arr[i] ){
+            swapIndex++
+            if( i != swapIndex ){
+                ;[arr[i], arr[swapIndex]] = [arr[swapIndex], arr[i]]
+            }
+        }
+    }
+
+    if( swapIndex != start ){
+        ;[arr[swapIndex], arr[start]] = [arr[start], arr[swapIndex]]
+    }
+    return swapIndex
 }
