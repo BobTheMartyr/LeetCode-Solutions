@@ -1,0 +1,35 @@
+// Merge Sort
+// Runtime 1218 ms Beats 31.38% Memory 66.9 MB Beats 21.37%
+
+var sortArray = function(nums) {
+    return mergeSort(nums)
+};
+
+let mergeSort = function(arr){
+
+    if( arr.length <= 1 ){
+        return arr
+    }
+
+    let mid = Math.floor(arr.length/2)
+
+    let left = mergeSort(arr.slice(0, mid))
+    let right = mergeSort(arr.slice(mid))
+
+    return merge(left, right)
+}
+
+let merge = function(left, right){
+
+    let sortedArr = []
+
+    while( left.length && right.length ){
+        if( left[0] < right[0] ){
+            sortedArr.push(left.shift())
+        } else {
+            sortedArr.push(right.shift())
+        }
+    }
+
+    return [...sortedArr, ...left, ...right]
+}
