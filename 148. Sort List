@@ -1,0 +1,20 @@
+// Runtime 218 ms Beats 45.65% || Memory 68.3 MB Beats 32.78%
+
+var sortList = function(head) {
+    
+    let nums = []
+    while( head ){
+        nums.push(head.val)
+        head = head.next
+    }
+
+    let node = tail = new ListNode()
+    nums = nums.sort((a,b) => a - b)
+    for( let el of nums){
+        node.next = new ListNode(el)
+        node = node.next
+    }
+
+    return tail.next
+
+};
