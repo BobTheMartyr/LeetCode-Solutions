@@ -1,0 +1,11 @@
+// Runtime 56 ms Beats 91.15% || Memory 41.9 MB Beats 52.95%
+
+var sortSentence = function(s) {
+    let sent = []
+    s = s.split(' ')
+    for( let i = 0; i < s.length; i++ ){
+        sent.push(s.filter(el => el.includes(i + 1)))
+    }
+
+    return sent.map(el => el.map(el => el.match(/\D/g).join(''))).join(' ')
+};
