@@ -1,3 +1,5 @@
+//Runtime 90 ms Beats 79.31% || Memory 45.4 MB Beats 9.85%
+
 var insertionSortList = function(head) {
     
     let vals = []
