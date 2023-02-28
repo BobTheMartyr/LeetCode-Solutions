@@ -1,4 +1,19 @@
-//Runtime 63 ms Beats 68.50% || Memory 41.9 MB Beats 58.15%
+// Runtime 61 ms Beats 74.33% || Memory 42.1 MB Beats 44.84%
+
+var middleNode = function(head){
+
+    let slow = fast = head
+    
+    while( fast && fast.next ){
+        slow = slow.next
+        fast = fast.next.next
+    }
+
+    return slow
+}
+
+
+// Runtime 63 ms Beats 68.50% || Memory 41.9 MB Beats 58.15%
 
 var middleNode = function(head) {
     
