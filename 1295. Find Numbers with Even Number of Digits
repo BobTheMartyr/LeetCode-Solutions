@@ -1,0 +1,16 @@
+// Runtime 67 ms Beats 65.42% || Memory 44.9 MB Beats 9.64%
+
+var findNumbers = function(nums) {
+    let arr = []
+
+    for( let el of nums ){
+        let count = 1
+        while( el >= 10 ){
+            el /= 10
+            count++
+        }
+        arr.push(count)
+    }
+
+    return arr.filter( el => el % 2 === 0).length
+};
