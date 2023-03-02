@@ -1,3 +1,22 @@
+// Questionably worse?
+// Runtime 60 ms Beats 88.29% || Memory 45.9 MB Beats 5.66%
+
+var findNumbers = function(nums){
+
+    for( let el in nums ){
+        let count = 1
+        while( nums[el] >= 10 ){
+            nums[el] /= 10
+            count++
+        }
+        nums.splice(el, 1, count)
+    }
+
+    return nums.filter(el => el %2 === 0).length
+}
+
+
+
 // Runtime 67 ms Beats 65.42% || Memory 44.9 MB Beats 9.64%
 
 var findNumbers = function(nums) {
