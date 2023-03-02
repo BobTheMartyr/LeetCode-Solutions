@@ -1,0 +1,8 @@
+// Runtime 96 ms Beats 43.28% || Memory 44.9 MB Beats 45.77%
+
+var findMaxK = function(nums) {
+    
+    let temp = nums.filter(el => nums.includes(-el))
+    return temp.length ? Math.max(...temp) : -1
+
+};
