@@ -1,0 +1,18 @@
+// Runtime 114 ms Beats 98.28% || Memory 49.9 MB Beats 27.34%
+
+class ParkingSystem{
+    constructor( big, medium, small ){
+        this['1'] = big
+        this['2'] = medium
+        this['3'] = small
+    }
+    addCar(carType){
+        
+        if( this[`${carType}`] >= 1 ){
+            this[`${carType}`] -= 1
+            return true
+        } else { 
+            return false
+        }
+    }
+}
