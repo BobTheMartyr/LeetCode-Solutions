@@ -1,0 +1,16 @@
+// Runtime 84 ms Beats 60.36% || Memory 47.3 MB Beats 28.17%
+
+var numUniqueEmails = function(emails) {
+    emails = emails.map(el => el.split('@'))
+    let results = []
+    for( let i = 0; i < emails.length; i++ ){
+        emails[i][0] = emails[i][0].replace(/[.]/g, '')
+        if( emails[i][0].includes('+') ){
+            emails[i][0] = emails[i][0].slice(0, emails[i][0].indexOf('+'))
+        }
+        if( !results.includes(emails[i].join('@')) ){
+            results.push(emails[i].join('@'))
+        }
+    }
+    return results.length
+};
