@@ -13,3 +13,25 @@ var deleteDuplicates = function(head) {
 
     return tail
 };
+
+// This just creates a new one
+// Runtime 62 ms Beats 96.41% || Memory 44.4 MB Beats 28.82%
+
+var deleteDuplicates = function( head ){
+
+    let vals = []
+    while( head ){
+        vals.push(head.val)
+        head = head.next
+    }
+
+    vals = Array.from(new Set(vals))
+
+    let newList = tail = new ListNode()
+    for( let el of vals ){
+        newList.next = new ListNode(el)
+        newList = newList.next
+    }
+
+    return tail.next
+}
