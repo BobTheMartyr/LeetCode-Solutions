@@ -1,0 +1,15 @@
+// Runtime 81 ms Beats 28.43% || Memory 44.2 MB Beats 39.95%
+
+var deleteDuplicates = function(head) {
+    
+    let tail = head
+    
+    while ( head ){
+        while( head.next != null && head.val === head.next.val ){
+            head.next = head.next.next
+        }
+        head = head.next
+    }
+
+    return tail
+};
