@@ -1,0 +1,27 @@
+// Runtime 5362 ms Beats 5.5% || Memory 65.9 MB Beats 67.68%
+
+var findingUsersActiveMinutes = function(logs, k) {
+    
+    let map = {}
+    for( let el of logs ){
+        if( map[el[0]] && map[el[0]].includes(el[1]) ){
+            continue
+        } else if( map[el[0]] ){
+            map[el[0]].push(el[1])
+        } else {
+            map[el[0]] = [el[1]]
+        }
+    }
+
+    for( let el in map ){
+        map[el] = map[el].length
+    }
+
+    let result = []
+    let test = Object.values(map)
+    for( let i = 0; i < k; i++ ){
+        result.push(0 + test.filter(el => el === i + 1).length)
+    } 
+    
+    return result
+};
