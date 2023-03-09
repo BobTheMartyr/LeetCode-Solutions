@@ -1,3 +1,28 @@
+// Runtime 279 ms Beats 67.68% || Memory 66.7 MB Beats 49.50%
+
+var findingUsersActiveMinutes = function(logs, k) {
+    logs.sort( (a,b) => a[0] - b[0] )
+
+    let map = {}
+    for( let [id, min] of logs ){
+        if( !map[id] ){
+            map[id] = new Set()
+        }
+        map[id].add(min)
+    }
+
+    let result = new Array(k).fill(0)
+
+    for( let id in map ){
+        let count = map[id].size
+        result[count-1]++
+    }
+
+    return result
+
+}
+
+
 // Runtime 5362 ms Beats 5.5% || Memory 65.9 MB Beats 67.68%
 
 var findingUsersActiveMinutes = function(logs, k) {
