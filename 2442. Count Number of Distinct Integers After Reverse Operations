@@ -1,3 +1,28 @@
+// Runtime 139 ms Beats 99.51% || Memory 74.4 MB Beats 57.77%
+
+var countDistinctIntegers = function( nums ){
+
+    let reverses = []
+    for( let el of nums ){
+        reverses.push(reverseInteger(el))
+    }
+
+    return new Set(nums.concat(reverses)).size
+    
+}
+
+var reverseInteger = function( num ){
+
+    var digit, result = 0
+    while( num ){
+        digit = num % 10
+        result = ( result * 10 ) + digit
+        num = (num - digit) / 10 | 0
+    }
+    return result
+}
+
+
 // Runtime 326 ms Beats 50.49% || Memory 78.7 MB Beats 33.1%
 
 var countDistinctIntegers = function(nums) {
