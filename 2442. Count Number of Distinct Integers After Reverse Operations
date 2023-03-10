@@ -1,0 +1,11 @@
+// Runtime 326 ms Beats 50.49% || Memory 78.7 MB Beats 33.1%
+
+var countDistinctIntegers = function(nums) {
+    
+    let res = []
+    for( let el of nums ){
+        res.push( parseInt(el.toString().split('').reverse().join('')) )
+    }
+
+    return Array.from(new Set(nums.concat(res))).length
+};
