@@ -1,0 +1,20 @@
+// Runtime 129 ms Beats 6.64% || Memory 43.9 MB Beats 63.62%
+
+var partitionLabels = function(s) {
+    
+    s = s.split('')
+    let last = 0
+    let partitions = []
+    let anchor = 0
+    for( let i = 0; i < s.length; i ++){
+        if( s.lastIndexOf(s[i]) > last ){
+            last = s.lastIndexOf(s[i])
+        }
+        if( i === last ){
+            partitions.push(s.slice(anchor, last + 1).join(''))
+            anchor = i + 1
+        }
+    }
+
+    return partitions.map(el => el.length)
+};
