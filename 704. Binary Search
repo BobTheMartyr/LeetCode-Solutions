@@ -1,0 +1,17 @@
+// Runtime 70 ms Beats 49.84% || Memory 45.4 MB  Beats 15.50%
+
+var search = function(nums, target) {
+    let left = 0
+    let right = nums.length - 1
+    while( left < right ){
+        let mid = left + Math.floor((right - left + 1)/2)
+        // if the target is less than nums[mid], the right boundary becomes one less than the middle. If not, the middle becomes the left boundary and the process repeats
+        if( target < nums[mid] ){
+            right = mid - 1
+        } else {
+            left = mid
+        }
+    }
+
+    return nums[left] === target ? left : -1
+};
