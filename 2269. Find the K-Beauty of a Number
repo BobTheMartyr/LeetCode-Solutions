@@ -1,0 +1,13 @@
+// Runtime 64 ms Beats 60.78% || Memory 41.6 MB Beats 93.10%
+
+var divisorSubstrings = function(num, k) {
+
+    let kBeauty = 0
+    for( let i = 0; i <= num.toString().length - k; i++ ){
+        let temp = parseInt(num.toString().slice(i, i+k))
+        if( num%temp === 0 ){
+            kBeauty++
+        }
+    }
+    return kBeauty
+};
