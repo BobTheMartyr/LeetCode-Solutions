@@ -1,0 +1,30 @@
+// Runtime 68 ms Beats 62.50% || Memory 44.2 MB Beats 55.77%
+
+var findAndReplacePattern = function(words, pattern){
+
+    let result = []
+    for( let i = 0; i < words.length; i++ ){
+        if( patternMatcher(words[i], pattern) ){
+            result.push(words[i])
+        }
+    }
+    return result
+}
+
+var patternMatcher = function(word, pattern){
+
+    if( new Set(word).size != new Set(pattern).size ){
+        return false
+    }
+
+    let map = {}
+    for( let el in word ){
+        if( map[word[el]] != undefined ){
+            if( map[word[el]] != pattern[el]){
+                return false
+            } 
+        }
+        map[word[el]] = pattern[el]
+    }
+    return true
+}
