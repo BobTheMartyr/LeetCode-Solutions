@@ -1,0 +1,5 @@
+// Runtime 51 ms Beats 98.13% || Memory 42.1 MB Beats 70.39%
+
+var kidsWithCandies = function(candies, extraCandies) {
+    return candies.map(el => el + extraCandies >= Math.max(...candies))
+};
