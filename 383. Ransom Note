@@ -1,0 +1,13 @@
+Runtime 72 ms Beats 94% || Memory 48.7 MB Beats 16.12%
+
+var canConstruct = function(ransomNote, magazine) {
+    let note = ''
+    for( let el of ransomNote ){
+        if( magazine.includes(el) ){
+            note += el
+            magazine = magazine.replace(el, '')
+        }
+    }
+
+    return note === ransomNote ? true : false
+};
