@@ -1,3 +1,23 @@
+// Runtime 61 ms eats 91.30% || Memory 44 MB Beats 23.91%
+
+var calculateTime = function( keyboard, word ){
+
+    let count = 0, cur = 0
+
+    let keys = new Map(keyboard.split('').map((el, i) => [el,i]))
+
+    for( let el of word){
+        let temp = keys.get(el)
+        count += Math.abs( cur - temp )
+        cur = temp
+    }
+
+    return count
+
+}
+
+
+
 // Runtime 81 ms Beats 17.39% || Memory 48.7 MB Beats 8.70%
 
 var calculateTime = function(keyboard, word) {
