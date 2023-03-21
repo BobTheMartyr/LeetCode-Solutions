@@ -1,0 +1,15 @@
+// Runtime 81 ms Beats 17.39% || Memory 48.7 MB Beats 8.70%
+
+var calculateTime = function(keyboard, word) {
+
+    let total = 0
+    for( let el in word ){
+        if( el === 0 ){
+            total += keyboard.indexOf(word[el])
+        } else {
+            total += Math.abs( keyboard.indexOf(word[el - 1]) - keyboard.indexOf(word[el]) )
+        }
+    }
+
+    return total - 1
+};
