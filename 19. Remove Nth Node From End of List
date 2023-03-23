@@ -1,0 +1,24 @@
+// Runtime 58 ms Beats 87.49% || Memory 43.4 MB Beats 26.7%
+
+
+var removeNthFromEnd = function(head, n) {
+    
+    let length = 0
+    let vals = []
+    while( head ){
+        length++
+        vals.push(head.val)
+        head = head.next
+    }
+    
+    let nodeToRemove = length - n
+
+    let front = end = new ListNode()
+    for( let i = 0; i < vals.length; i++ ){
+        if( i != nodeToRemove ){
+            end.next = new ListNode(vals[i])
+            end = end.next
+        }
+    }
+    return front.next
+};
