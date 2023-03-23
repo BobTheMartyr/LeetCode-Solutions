@@ -1,3 +1,30 @@
+// Runtime 55 ms Beats 93.61% || Memory 43 MB Beats 38.69%
+
+
+var removeNthFromEnd = function(head, n){
+    let fast = head, slow = head
+    
+    // Sets the first pointer n nodes apart from the second
+    for( let i = 0; i < n; i++ ){
+        fast = fast.next
+    }
+    
+    if( !fast ){
+        return head.next
+    }
+
+    while( fast.next ){
+        fast = fast.next
+        slow = slow.next
+    }
+
+    slow.next = slow.next.next
+    return head
+}
+
+
+
+
 // Runtime 58 ms Beats 87.49% || Memory 43.4 MB Beats 26.7%
 
 
