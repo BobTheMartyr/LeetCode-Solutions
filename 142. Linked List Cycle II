@@ -1,0 +1,16 @@
+// Runtime 69 ms Beats 90.27% || Memory 45.6 MB Beats 15.9%
+
+var detectCycle = function(head) {
+    
+    let map = new Map()
+
+    node = head
+    while( node != null ){
+        if( map.has(node) ){
+            return node
+        }
+        map.set(node)
+        node = node.next
+    }
+    return null
+};
