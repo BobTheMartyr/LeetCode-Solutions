@@ -1,0 +1,30 @@
+// Runtime 71 ms Beats 81.91% || Memory 44.9 MB Beats 49.35%
+
+var hasCycle = function(head){
+    slow = fast = head
+    while( fast != null && fast.next != null ){
+        slow = slow.next
+        fast = fast.next.next
+        if( slow === fast ){
+            return true
+        }
+    }
+    return false
+}
+
+// Runtime 83 ms Beats 30.13% || Memory 46.3 MB Beats 5.86%
+
+var hasCycle = function(head) {
+    
+    let hash = new Map()
+    while( head != null ){
+        if( hash.has(head) ){
+            return true
+        }
+        hash.set(head)
+        head = head.next
+    }
+    return false
+};
+
+
