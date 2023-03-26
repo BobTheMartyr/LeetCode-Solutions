@@ -1,0 +1,20 @@
+// Runtime 71 ms Beats 91.46% || Memory 46.3 MB Beats 72.29%
+
+var removeElements = function(head, val) {
+
+    let sentinel = new ListNode(0)
+    sentinel.next = head
+
+    prev = sentinel
+    current = head
+
+    while( current != null ){
+        if( current.val === val ){
+            prev.next = current.next
+        } else {
+            prev = current
+        }
+        current = current.next
+    }
+    return sentinel.next
+};
