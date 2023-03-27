@@ -1,0 +1,9 @@
+// Runtime 60 ms Beats 92.40% || Memory 44.2 MB Beats 77.97%
+
+var restoreString = function(s, indices) {
+    let result = []
+    for( let i = 0; i < s.length; i++ ){
+        result[indices[i]] = s[i]
+    }
+    return result.join('')
+};
