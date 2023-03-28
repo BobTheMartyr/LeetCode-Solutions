@@ -1,0 +1,22 @@
+// Runtime 61 ms Beats 84.42% || Memory 47.2 MB Beats 5.19%
+
+var arraysIntersection = function(arr1, arr2, arr3) {
+    let map = new Map()
+    arr1 = arr1.concat(arr2, arr3)
+    for( let el of arr1 ){
+        if( map.has(el) ){
+            map.set(el, map.get(el) + 1)
+        } else {
+            map.set(el, 1)
+        }
+    }
+
+    let result = []
+    for( let [key, value] of map ){
+        if( value === 3 ){
+            result.push(key)
+        }
+    }
+
+    return result
+};
