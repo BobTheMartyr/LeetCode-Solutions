@@ -1,12 +1,27 @@
+// Runtime 186 ms Beats 46.72% || Memory 72.6 MB Beats 20.86%
+
 var isPalindrome = function(head) {
-    let values = []
 
+    if( !head ){
+        return false
+    }
 
+    let vals = []
     while( head != null ){
-        values.push(head.val)
+        vals.push(head.val)
         head = head.next
     }
-   
-   return values.slice(0, values.length/2).join('') === values.slice(Math.ceil(values.length/2)).reverse().join('') 
+    
+    let p1 = 0
+    let p2 = vals.length-1
+    for( let i = 0; i < vals.length/2; i++ ){
+        if( vals[p1] === vals[p2] ){
+            p1++
+            p2--
+        } else{
+            return false
+        }
+    }
 
+    return true
 };
