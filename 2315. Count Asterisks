@@ -1,0 +1,19 @@
+// Runtime 62 ms Beats 64.85% || Memory 42.4 MB Beats 64.85%
+
+
+var countAsterisks = function(s) {
+    let open = true
+    let count = 0
+    for( let i = 0; i < s.length; i++ ){
+        if( s[i] === '*' && open ){
+            count++
+        }
+        if( s[i] === '|' && open ){
+            open = false
+        } else if(s[i] === '|' && !open){
+            open = true
+        }
+    }
+
+    return count
+};
