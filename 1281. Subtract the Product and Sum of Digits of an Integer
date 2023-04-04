@@ -1,0 +1,16 @@
+// 60 ms Beats 59.6% || Memory 42.1 MB Beats 49.90%
+
+var subtractProductAndSum = function(n) {
+
+    let digits = []
+    while( n > 9 ){
+        digits.push( n % 10 )
+        n = (n - (n % 10)) / 10
+    }
+    digits.push(n)
+
+    let sum = digits.reduce((t,c) => t + c)
+    let product = digits.reduce((t,c) => t * c)
+
+    return product - sum
+};
