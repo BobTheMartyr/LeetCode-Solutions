@@ -1,0 +1,47 @@
+// Runtime 79 ms Beats 23.75% || Memory 44.4 MB Beats 21.98%
+
+var rotateRight = function(head, k) {
+    
+    if( !head || !head.next ){
+        return head
+    }
+
+    let sentinel = new ListNode()
+    sentinel.next = head
+    
+    let lengthNode = head
+    let len = 0
+    while( lengthNode != null ){
+        lengthNode = lengthNode.next
+        len++
+    }
+
+    if( len >= k){
+        for( let i = 0; i < k; i++ ){
+            let curr = sentinel.next.next
+            let prev = sentinel.next
+            while( curr.next != null ){
+                curr = curr.next
+                prev = prev.next
+            }
+            curr.next = sentinel.next
+            sentinel.next = curr
+            prev.next = null
+        }
+    }
+    if( len < k ){
+        let rots = k % len
+        for( let i = 0; i < rots; i++ ){
+            let curr = sentinel.next.next
+            let prev = sentinel.next
+            while( curr.next != null ){
+                curr = curr.next
+                prev = prev.next
+            }
+            curr.next = sentinel.next
+            sentinel.next = curr
+            prev.next = null
+        }
+    }
+    return sentinel.next
+};
