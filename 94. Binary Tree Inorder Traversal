@@ -1,0 +1,17 @@
+// Runtime 58 ms Beats 73.33% || Memory 42.5 MB Beats 13.5%
+
+var inorderTraversal = function(root) {
+    let vals = []
+
+    const dfs = root => {
+        if( root == null ){
+            return
+        }
+        dfs(root.left)
+        vals.push(root.val)
+        dfs(root.right)
+    }
+
+    dfs(root)
+    return vals
+}
