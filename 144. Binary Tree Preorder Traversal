@@ -1,0 +1,17 @@
+// Runtime 48 ms Beats 97.53% || Memory 42.5 MB Beats 11.34%
+
+var preorderTraversal = function(root) {
+   let answer = []
+
+   const dfs = root => {
+       if( root == null ){
+           return
+       }
+       answer.push(root.val)
+       dfs(root.left)
+       dfs(root.right)
+   }
+
+   dfs(root)
+   return answer
+}
