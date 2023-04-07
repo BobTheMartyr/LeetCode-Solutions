@@ -1,0 +1,36 @@
+// Runtime 59 ms Beats 89.16% || Memory 44.1 MB Beats 62.59%
+
+
+var levelOrder = function(root) {
+    if( !root ){
+        return []
+    }
+
+    let queue = [root] // Initialize the queue with the root node
+    let levels = [] // declare result array
+
+    while( queue.length ){
+        let queueLength = queue.length // Get the length prior to dequeueing
+        let currLevel = [] // Declare this level
+        // Loop through to exhaust all options and only to include nodes at currLevel
+        for( let i = 0; i < queueLength; i++ ){
+            // Get to the next node
+            const current = queue.shift()
+            
+            if( current.left ){
+                queue.push(current.left)
+            }
+            
+            if( current.right ){
+                queue.push(current.right)
+            }
+            
+            // After we add left and right for current, we add to currLevel
+            currLevel.push(current.val)
+            //console.log(currLevel)
+        }
+        // Level has been finished. Push into results array
+        levels.push(currLevel)
+    }
+    return levels
+};
