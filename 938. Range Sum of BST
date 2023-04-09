@@ -1,0 +1,21 @@
+//Runtime 227 ms Beats 64.20% || Memory 72.8 MB Beats 82.80%
+
+
+var rangeSumBST = function(root, low, high) {
+    
+    let sum = 0
+
+    const traverse = root => {
+        if( !root ){
+            return
+        }
+        traverse(root.left)
+        if( root.val >= low && root.val <= high ){
+            sum += root.val
+        }
+        traverse(root.right)
+    }
+    traverse(root)
+    return sum
+    
+};
