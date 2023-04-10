@@ -1,0 +1,18 @@
+// Runtime 310 ms Beats 44.87% || Memory 64.3 MB Beats 51.91%
+
+var getTargetCopy = function(original, cloned, target) {
+    
+    let answer;
+    const traverse = function( original, cloned ){
+        if(original){
+            traverse(original.left, cloned.left)
+            if( original == target ){
+                answer = cloned
+            }
+            traverse(original.right, cloned.right)
+        }
+    }
+    traverse(original, cloned)
+    return answer
+ 
+};
