@@ -1,0 +1,22 @@
+// Runtime 85 ms Beats 27.91% || Memory 47.7 MB Beats 13.95%
+
+var getLonelyNodes = function(root) {
+    let results = []
+
+    const traverse = root => {
+        if( !root ){
+            return
+            }
+        if( root.left == null && root.right != null ){
+            results.push(root.right.val)
+        }    
+        if( root.left != null && root.right == null ){
+            results.push(root.left.val)
+        }
+        traverse(root.left)
+        traverse(root.right)
+    }
+
+    traverse(root)
+    return results
+};
