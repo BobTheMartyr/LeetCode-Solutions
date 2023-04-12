@@ -1,0 +1,9 @@
+// Runtime 66 ms Beats 18.5% || Memory 41.4 MB Beats 98.50%
+
+var anagramMappings = function(nums1, nums2) {
+    let result = []
+    for( let el in nums1 ){
+        result.push(nums2.indexOf(nums1[el]))
+    }
+    return result
+};
