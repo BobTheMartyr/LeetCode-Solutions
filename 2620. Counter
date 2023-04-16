@@ -1,0 +1,9 @@
+// Runtime 49 ms Beats 91.22% || Memory 42.1 MB Beats 38.1%
+
+var createCounter = function(n) {
+    let count = -1
+    return function() {
+        count++
+        return n + count
+    };
+};
