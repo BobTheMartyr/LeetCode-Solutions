@@ -1,0 +1,21 @@
+// Runtime 61 ms Beats 52.13% || Memory 42.5 MB Beats 57.82%
+
+var isUnivalTree = function(root) {
+    if( !root ) return false
+
+    let test = root.val
+    let isUnival = true
+    const traverse = node => {
+        if ( !node ){ 
+            return
+        }
+        if( node.val != test ){
+            isUnival = false
+        }
+        traverse(node.left)
+        traverse(node.right)
+
+    }
+    traverse(root)
+    return isUnival
+};
