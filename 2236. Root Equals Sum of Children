@@ -1,0 +1,5 @@
+// Runtime 62 ms Beats 62.37% || Memory 44 MB Beats 14.59%
+
+var checkTree = function(root) {
+    return root.val === root.left.val + root.right.val ? true : false
+};
