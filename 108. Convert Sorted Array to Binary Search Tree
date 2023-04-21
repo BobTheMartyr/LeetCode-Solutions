@@ -1,0 +1,16 @@
+// Runtime 57 ms Beats 99.33% || Memory 44.4 MB Beats 62.61% 
+
+
+var sortedArrayToBST = function(nums, left = 0, right = nums.length-1) {
+    if( left > right ) return null
+
+    let mid = Math.floor((left + right)/2)
+    console.log(right)
+    let root = new TreeNode(nums[mid])
+
+    root.left = sortedArrayToBST(nums, left, mid - 1)
+    root.right = sortedArrayToBST(nums, mid + 1, right)
+
+    return root
+    
+};
