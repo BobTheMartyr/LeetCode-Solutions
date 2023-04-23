@@ -1,0 +1,19 @@
+// Runtime 82 ms Beats 73.36% || Memory 45.1 MB Beats 77.74%
+
+var buildTree = function(preorder, inorder) {
+    let hash = {}
+    for( let i = 0; i < inorder.length; i++ ){
+        hash[inorder[i]] = i
+    }
+
+    const helper = function( start, end ){
+        if( start > end ) return null
+        let val = preorder.shift()
+        let root = new TreeNode(val)
+        root.left = helper( start, hash[val] - 1)
+        root.right = helper( hash[val] + 1, end )
+        return root
+    }
+
+    return helper(0, inorder.length - 1)
+};
