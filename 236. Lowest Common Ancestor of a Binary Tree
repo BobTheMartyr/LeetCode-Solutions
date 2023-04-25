@@ -1,0 +1,18 @@
+// Runtime 86 ms Beats 31.66% || Memory 52.4 MB Beats 19.2%
+
+var lowestCommonAncestor = function(root, p, q) {
+    let ans = null
+
+    const recur = ( currentNode, p, q ) => {
+        if( currentNode == null ) return false
+        let left = recur(currentNode.left, p, q) ? 1 : 0
+        let right = recur(currentNode.right, p, q) ? 1 : 0
+        let mid = ( currentNode === p || currentNode === q ) ? 1 : 0
+        if( mid + left + right >= 2 ){
+            ans = currentNode
+        }
+        return (mid + left + right > 0)
+    }
+    recur(root, p, q)
+    return ans
+};
