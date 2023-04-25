@@ -1,0 +1,5 @@
+// Runtime 67 ms Beats 16.49% || Memory 41.6 MB Beats 92.46%
+
+var arrayStringsAreEqual = function(word1, word2) {
+    return word1.join('') === word2.join('') ? true : false
+};
