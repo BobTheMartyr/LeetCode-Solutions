@@ -1,0 +1,34 @@
+// Runtime 122 ms Beats 25.74% Memory 50.7 MB Beats 37.62%
+
+var serialize = function(root) {
+    const recur = (str, node) => {
+        if( !node ){
+            return str += 'null,'
+        }
+        str += node.val + ','
+        str = recur(str, node.left)
+        str = recur(str, node.right)
+
+        return str
+    }
+    return recur( '', root)
+};
+
+
+var deserialize = function(data) {
+    let lore = data.split(',')
+
+    const recur = lore => {
+        if( lore[0] == 'null' ){
+            lore.shift()
+            return null
+        }
+        let node = new TreeNode(lore[0])
+        lore.shift()
+        node.left = recur(lore)
+        node.right = recur(lore)
+
+        return node
+    }
+    return recur(lore)
+};
