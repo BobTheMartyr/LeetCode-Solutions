@@ -1,0 +1,31 @@
+// Runtime 57 ms Beats 68.72% || Memory 42.3 MB Beats 37.53%
+
+var getRow = function(rowIndex) {
+    if( rowIndex === 0 ){
+        return [1]
+    } 
+    if( rowIndex === 1 ){
+        return [1,1]
+    }
+    let result;
+    const recur = (row, idx, rowIndex) => {
+ 
+        if( idx > rowIndex ){
+            return row
+        }
+        let temp = []
+        let i = 0
+        let j = i + 1
+        while( temp.length < idx - 1 ){
+            temp.push( row[i] + row[j] )
+            i++
+            j++
+        }
+        temp.unshift( 1 )
+        temp.push( 1 )
+        result = temp
+        recur( temp, idx + 1, rowIndex)
+    }
+    recur( [1,1], 2, rowIndex )
+    return result
+};
