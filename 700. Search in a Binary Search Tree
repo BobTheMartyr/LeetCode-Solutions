@@ -1,0 +1,14 @@
+var searchBST = function(root, val) {
+    const recur = (node, val) => {
+        if( !node ){
+            return 
+        }
+        if( node.val === val ){
+            return node
+        }
+        recur( node.left, val )
+        recur( node.right, val )
+    }
+    recur( root, val )
+    
+};
