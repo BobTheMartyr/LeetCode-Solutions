@@ -1,14 +1,17 @@
+// Runtime 90 ms Beats 16.10% || Memory 49.1 MB Beats 61.44%
+
 var searchBST = function(root, val) {
-    const recur = (node, val) => {
-        if( !node ){
-            return 
-        }
+    if( !root ) return []
+    let foundVal = null
+    const recur = node => {
+        if( !node ) return
         if( node.val === val ){
-            return node
+            foundVal = node
+            return
         }
-        recur( node.left, val )
-        recur( node.right, val )
+        recur( node.left )
+        recur( node.right )
     }
-    recur( root, val )
-    
-};
+    recur( root )
+    return foundVal
+}
