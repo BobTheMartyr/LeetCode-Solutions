@@ -1,3 +1,17 @@
+// Runtime 78 ms Beats 41% || Memory 41.9 MB Beats 52.27%
+
+var fib = function(n){
+    let num;
+    if( n < 2 ){
+        return n
+    } else {
+        num = fib( n - 1 ) + fib( n - 2 )
+    }
+    return num
+}
+
+
+
 var fib = function(n) {
     let fib = [0,1]
     while(fib.length <= n){
