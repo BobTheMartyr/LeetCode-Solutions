@@ -1,0 +1,38 @@
+// Runtime 55 ms Beats 70.8% || Memory 41.9 MB Beats 51.45%
+
+// Memoization
+
+var climbStairs = function(n){
+    const climb_stairs = (i, n, memo) =>{
+        if( i > n ){
+            return 0
+        }
+        if( i == n ){
+            return 1
+        }
+        if( memo[i] > 0 ){
+            return memo[i]
+        }
+        memo[i] = climb_stairs(i + 1, n, memo) + climb_stairs(i + 2, n, memo)
+        return memo[i]
+    }
+    let memo = []
+    return climb_stairs(0, n, memo)
+}
+
+
+
+// Brute force - Times out
+var climbStairs = function(n) {
+    const climb_stairs = (i, n) => {
+        if( i > n ){
+            return 0
+        }
+        if( i === n ){
+            return 1
+        }
+        return climb_stairs(i + 1, n) + climb_stairs(i + 2, n)
+    }
+    return climb_stairs(0, n)
+};
+*/
