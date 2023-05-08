@@ -1,0 +1,6 @@
+// Runtime 75 ms Beats 35.14% || Memory 43.7 MB Beats 44.18%
+
+var isPowerOfFour = function(n) {
+    let number = Math.log(n) / Math.log(4)
+    return Number.isInteger(number)
+};
