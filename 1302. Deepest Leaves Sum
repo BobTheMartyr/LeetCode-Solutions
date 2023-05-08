@@ -1,0 +1,22 @@
+// Runtime 198 ms Beats 21.78% || Memory 97.8 MB Beats 5.51%
+
+var deepestLeavesSum = function(root) {
+    if( !root ) {
+        return []
+    }
+
+    let queue = [root]
+    let result = []
+
+    while( queue.length ){
+        let len = queue.length
+        result.push(queue.map(el => el.val))
+
+        while( len-- ){
+            let curr = queue.shift()
+            if( curr.left ) queue.push(curr.left)
+            if( curr.right ) queue.push(curr.right)
+        }
+    }
+    return result[result.length - 1].reduce((t,c) => t + c)
+};
