@@ -1,0 +1,6 @@
+// Runtime 241 ms Beats 22.44% || Memory 50.7 MB Beats 92.56%
+
+var isPowerOfThree = function(n) {
+    let number = Math.log10(n) / Math.log10(3)
+    return Number.isInteger(number)
+};
