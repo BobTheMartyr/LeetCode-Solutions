@@ -1,0 +1,5 @@
+// Runtime 76 ms Beats 34.13% || Memory 44.2 MB Beats 12.7%
+
+var isPowerOfTwo = function(n) {
+    return ( Math.log10(n) / Math.log10(2) ) % 1 == 0
+};
