@@ -1,0 +1,25 @@
+// Runtime 80 ms Beats 84.94% || Memory 48.5 MB Beats 42.17%
+
+var generateTrees(n){
+  const generate = (start, end) => {
+    let result = []
+    if( start > end ) return [null]
+    
+    for( let i = start; i <= end; i++ ){
+      const leftTrees = generate(start, i - 1)
+      const rightTrees = generate(i + 1, end)
+      
+      for( let leftNode of leftTrees ){
+        for( let rightNode of rightTrees ){
+          let root = new TreeNode(i)
+          root.left = leftNode
+          root.right = rightNode
+          
+          result.push(root)
+        }
+      }
+    }
+    return result
+  }
+  return generate(1, n)
+}
