@@ -1,3 +1,22 @@
+// Runtime 58 ms Beats 73.56% || Memory 41.8 MB Beats 52.5%
+
+var fib = (n, cache = {}) => {
+    if( n in cache ){
+        return cache[n]
+    }
+    if( n <= 1 ){
+        return n
+    }
+    
+    let result = fib( n - 1, cache ) + fib( n - 2, cache )
+    
+    cache[n] = result
+    
+    return result
+}
+
+
+
 // Runtime 78 ms Beats 41% || Memory 41.9 MB Beats 52.27%
 
 var fib = function(n){
