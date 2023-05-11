@@ -1,0 +1,11 @@
+// Runtime 65 ms Beats 88.27% || Memory 43.8 MB Beats 9.22%
+
+var compose = function(functions) {
+    return function(x) {
+        while( functions.length ){
+            x = functions[functions.length - 1](x)
+            functions.pop()
+        }    
+        return x
+    }
+};
