@@ -1,0 +1,12 @@
+// Runtime 56 ms Beats 67.65% || Memory 41.8 MB Beats 74.76%
+
+
+var fibGenerator = function*(){
+  let fib = [0,1]
+  let i = 0
+  while( true ){
+    fib.push(fib[fib.length - 1] + fib[fib.length - 2])
+    i++
+    yield fib[i - 1]
+  }
+}
