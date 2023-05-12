@@ -1,0 +1,53 @@
+// Runtime 108 ms Beats 88.71% || Memory 49.9 MB Beats 69.3%
+
+class MyCircularQueue {
+    constructor(k){
+        this.size = 0
+        this.head = new ListNode()
+        this.tail = this.head
+        this.max = k
+    }
+    enQueue = function(value){
+        if( this.size == this.max ){
+            return false
+        }
+        let node = new ListNode(value)
+        if( this.size == 0 ){
+            this.head = this.tail = node
+        } else {
+            this.tail.next = node
+            this.tail = node
+        }
+        this.size++
+        return true
+    }
+    deQueue = function(){
+        if( this.size == 0 ){
+            return false
+        }
+        this.head = this.head.next
+        this.size--
+        return true
+
+    }
+    Front = function(){
+        if( this.size == 0 ){
+            return -1
+        } else {
+            return this.head.val
+        }
+    }
+    Rear = function(){
+        if( this.size == 0 ){
+            return -1
+        } else {
+            return this.tail.val
+        }
+    }
+    isFull = function(){
+        return this.size == this.max
+    }
+    isEmpty = function(){
+        return this.size == 0 
+    }
+}
