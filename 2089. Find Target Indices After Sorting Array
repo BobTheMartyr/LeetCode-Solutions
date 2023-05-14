@@ -1,0 +1,12 @@
+// Runtime 66 ms Beats 53.33% || Memory 43.6 MB Beats 74.55%
+
+var targetIndices = function(nums, target) {
+    nums.sort((a,b) => a-b)
+    let res = []
+    for( let el in nums ){
+        if( nums[el] == target ){
+            res.push(el)
+        }
+    }
+    return res
+};
