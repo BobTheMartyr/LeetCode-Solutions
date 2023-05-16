@@ -1,0 +1,30 @@
+// Runtime 94 ms Beats 37.80% || Memory 44.9 MB Beats 37.32%
+
+var findTheWinner = function(n, k) {
+    
+    let head = new ListNode(1)
+    let tail = head
+    let i = 2
+    while( i <= n ){
+        tail.next = new ListNode(i)
+        tail = tail.next
+        i++
+    }
+    
+    tail.next = head
+
+    let prev = tail
+    let count = 0
+
+    while( head.next != head ){
+        count++
+        if( count == k ){
+            prev.next = head.next
+            count = 0
+        }else{
+            prev = head
+        }
+        head = head.next
+    }
+    return head.val
+};
