@@ -1,4 +1,24 @@
- // Runtime 122 ms Beats 21.29% || Memory 51.9 MB Beats 8.43%
+// Runtime 99 ms Beats 75.90% || Memory 48.7 MB Beats 59.4%
+
+class MovingAverage{
+    constructor(size){
+        this.list = []
+        this.size = size
+        this.sum = 0
+    }
+    next = function(val){
+        if( this.list.length == this.size ){
+            this.sum -= this.list.shift()
+        }
+        this.list.push(val)
+        this.sum += val
+        return this.sum/this.list.length
+    }
+}
+
+
+
+// Runtime 122 ms Beats 21.29% || Memory 51.9 MB Beats 8.43%
  
  class MovingAverage{
      constructor(size){
