@@ -1,0 +1,20 @@
+ // Runtime 122 ms Beats 21.29% || Memory 51.9 MB Beats 8.43%
+ 
+ class MovingAverage{
+     constructor(size){
+        this.list = []
+        this.windowSize = size
+        this.headIndex = 0
+        this.tailIndex = 0
+     }
+
+    next = function(val){
+        this.list.push(val)
+        if( this.list.length > this.windowSize ){
+            this.headIndex++
+        }
+        this.tailIndex++
+        let tempList = this.list.slice(this.headIndex, this.tailIndex)
+        return tempList.reduce((t,c) => t + c)/tempList.length
+    }
+ }
