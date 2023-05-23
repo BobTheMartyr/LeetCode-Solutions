@@ -1,0 +1,19 @@
+// Runtime 82 ms Beats 39.91% || Memory 45.2 MB Beats 56.59%
+
+var topKFrequent = function(nums, k){
+    if( nums.length <= 1 ){
+        return nums
+    }
+
+    let map = {}
+    for( let el of nums ){
+        if( map[el] ){
+            map[el] += 1
+        } else {
+            map[el] = 1
+        }
+    }
+
+    let kVals = Object.entries(map).sort((a,b) => b[1] - a[1]).slice(0,k).map(el => Number(el[0]) )
+    return kVals
+}
