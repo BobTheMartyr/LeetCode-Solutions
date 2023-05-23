@@ -2,6 +2,7 @@
 
 var numKLenSubstrNoRepeats = function(s, k) {
     if( k > s.length ) return 0
+    if( k == 1 ) return s.length
     let word = ''
     let count = 0
     for( let i = 0; i < s.length; i++ ){
