@@ -1,3 +1,22 @@
+// Runtime 76 ms Beats 61.17% || Memory 45.3 MB Beats 56.59%
+
+var topKFrequent = function(nums, k){
+    let map = new Map()
+
+    for( let i = 0; i < nums.length; i++ ){
+        let val = nums[i]
+        let record = map.get(nums[i])
+        if( !record ){
+            map.set(val, 1)
+        } else {
+            map.set(val, ++record)
+        }
+    }
+    let sortedVals = [...map.entries()].sort((a,b) => b[1] - a[1])
+    return sortedVals.slice(0,k).map(el => el[0])    
+}
+
+
 // Runtime 82 ms Beats 39.91% || Memory 45.2 MB Beats 56.59%
 
 var topKFrequent = function(nums, k){
