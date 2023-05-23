@@ -14,7 +14,6 @@ var numKLenSubstrNoRepeats = function(s, k) {
                 let temp = new Set(word)
                 if( temp.size == k ){
                     count += 1
-                    console.log(word)
                     word = ''
                 }
                 break
