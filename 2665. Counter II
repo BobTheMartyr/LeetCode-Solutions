@@ -1,0 +1,32 @@
+// Runtime 57 ms Beats 94.21% || Memory 44 MB Beats 96.74%
+
+var createCounter = function(init) {
+    let value = init
+
+    return {
+        increment: () => ++value,
+        decrement: () => --value,
+        reset: () => value = init
+    }
+};
+
+// Runtime 75 ms Beats 20.46% || Memory 45.2 MB Beats 9.13%
+
+var createCounter = function(init) {
+    let value = init
+
+    return {
+        increment: function(){
+            value++
+            return value
+        },
+        decrement: function(){
+            value--
+            return value
+        },
+        reset: function(){
+            value = init
+            return value
+        }
+    }
+};
