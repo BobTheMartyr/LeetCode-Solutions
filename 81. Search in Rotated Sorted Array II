@@ -1,0 +1,23 @@
+// Runtime 62 ms Beats 50.13% || Memory 42 MB Beats 86.86%
+
+var search = function(nums, target) {
+    let start = 0
+    let end = nums.length - 1
+
+    while( start <= end) {
+        if( nums[start] == target || nums[end] == target ){
+            return true
+        }
+        start++
+        end--
+    }
+    return false
+};
+
+
+// Runtime 64 ms Beats 38.34% || Memory 44.6 MB Beats 5.90%
+
+var search = function(nums, target){
+    let hash = new Set(nums)
+    return hash.has(target)
+}
