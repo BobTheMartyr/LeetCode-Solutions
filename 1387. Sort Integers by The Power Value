@@ -1,0 +1,23 @@
+// Runtime 97 ms Beats 94.55% || Memory 45.9 MB Beats 80%
+
+var getKth = function(lo, hi, k) {
+    let powers = []
+    let i = lo
+    while( i <= hi ){
+        let temp = i
+        let counter = 0
+        while( temp != 1 ){
+            if( temp % 2 == 0 ){
+                temp /= 2
+                counter++
+            } else {
+                temp = 3 * temp + 1
+                counter++
+            }
+        }
+        powers.push([i,counter])
+        i++
+    }
+    powers.sort((a,b) => a[1] - b[1])
+    return powers[k-1][0]
+};
