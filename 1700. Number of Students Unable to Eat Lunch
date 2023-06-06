@@ -1,0 +1,14 @@
+// Runtime 49 ms Beats 96.30% Memory || 42.3 MB Beats 32.51%
+
+var countStudents = function(students, sandwiches) {
+    while( students.includes(sandwiches[0]) ){
+        if( students[0] == sandwiches[0] ){
+            students.shift()
+            sandwiches.shift()
+        } else {
+            students.push(students[0])
+            students.shift()
+        }
+    }
+    return students.length
+};
