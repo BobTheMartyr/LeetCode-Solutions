@@ -1,0 +1,5 @@
+// Sorry, there are not enough accepted submissions to show data
+
+var isEmpty = function(obj) {
+    return Object.entries(obj).length > 0 ? false : true 
+};
