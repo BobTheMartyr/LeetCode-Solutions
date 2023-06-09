@@ -1,0 +1,23 @@
+// Runtime 265 ms Beats 76.92% || Memory 91.3 MB Beats 46.15%
+
+var distinctNumbers = function(nums, k) {
+    let map = new Map()
+    let left = 0
+    let right = 0
+    let ans = []
+    while( right < nums.length ){
+        map.set(nums[right], (map.get(nums[right]) || 0) + 1)
+        if( right === k - 1 ){
+            ans.push(map.size)
+        } else if( right - left === k ){
+            map.set(nums[left], map.get(nums[left]) -1)
+            if( map.get(nums[left]) === 0 ){
+                map.delete(nums[left])
+            }
+            ans.push(map.size)
+            left++
+        }
+        right++
+    }
+    return ans
+};
