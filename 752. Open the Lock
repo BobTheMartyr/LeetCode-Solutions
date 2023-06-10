@@ -1,0 +1,40 @@
+// Runtime 204 ms Beats 84.62% || Memory 56.2 MB Beats 75.64%
+
+var openLock = function(deadends, target) {
+    const blocked = new Set(deadends)
+    const visited = new Set()
+
+    if( blocked.has('0000')) return -1
+    visited.add('0000')
+
+    let queue = ['0000']
+    let dist = 0
+
+    while( queue.length ){
+        const nextQueue = []
+
+        for( let comb of queue ){
+            if( comb === target )return dist
+
+            for( let i = 0; i < comb.length; i++ ){
+                const up = (+comb[i] + 1) % 10
+                const down = (+comb[i] + 9) % 10
+
+                const nextUp = comb.slice(0,i) + up + comb.slice(i + 1)
+                const nextDown = comb.slice(0, i) + down + comb.slice(i + 1)
+
+                if( !visited.has(nextUp) && !blocked.has(nextUp) ){
+                    nextQueue.push(nextUp)
+                    visited.add(nextUp)
+                }
+                if( !visited.has(nextDown) && !blocked.has(nextDown) ){
+                    nextQueue.push(nextDown)
+                    visited.add(nextDown)
+                }
+            }
+        }
+        dist++
+        queue = nextQueue
+    }
+    return -1
+};
