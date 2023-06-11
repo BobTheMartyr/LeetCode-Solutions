@@ -1,0 +1,21 @@
+// Runtime 71 ms Beats 7.14% || Memory 42.5 MB Beats 89.1%
+
+var increasingBST = function(root) {
+    
+    let newRoot = new TreeNode()
+    let sent = newRoot
+    var inorder = root => {
+        if( !root ){
+            return
+        }
+
+        inorder(root.left)
+        newRoot.right = new TreeNode(root.val)
+        newRoot = newRoot.right
+        inorder(root.right)
+    }
+    inorder(root)
+    sent = sent.right
+    return sent
+    
+};
