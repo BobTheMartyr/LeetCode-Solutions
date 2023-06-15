@@ -1,0 +1,16 @@
+// Runtime 278 ms Beats 72.93% || Memory 65.9 MB Beats 72.93%
+
+var dailyTemperatures = function(t){
+    let ans = new Array(t.length).fill(0)
+    let stack = []
+    for( let i = 0; i < t.length; i++ ){
+        let currDay = i
+        let currTemp = t[currDay]
+        while( stack.length > 0 && t[stack[stack.length-1]] < currTemp ){
+            let prevDay = stack.pop()
+            ans[prevDay] = currDay - prevDay
+        }
+        stack.push(currDay)
+    }
+    return ans
+}
