@@ -1,0 +1,23 @@
+// Runtime 69 ms Beats 66.45% || Memory 45.5 MB Beats 40.46%
+
+var evalRPN = function(tokens) {
+    let stack = []
+    for( let i = 0; i < tokens.length; i++ ){
+        if( Number.isInteger(parseInt(tokens[i])) ){
+            stack.push( parseInt(tokens[i]) )
+        } else if( tokens[i] == '+' ){
+            stack.push( stack.pop() + stack.pop() )
+        } else if( tokens[i] == '-' ){
+            let first = stack.pop()
+            let second = stack.pop()
+            stack.push( second - first )
+        } else if( tokens[i] == '*' ){
+            stack.push( stack.pop() * stack.pop() ) 
+        } else if( tokens[i] == '/' ){
+            let first = stack.pop()
+            let second = stack.pop()
+            stack.push( Math.trunc(second / first))
+        }
+    }
+    return stack[0]
+};
