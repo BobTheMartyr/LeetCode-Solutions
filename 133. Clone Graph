@@ -1,0 +1,38 @@
+// Runtime 67 ms Beats 32.52% || Memory 43.9 MB Beats 47.22%
+
+var cloneGraph = function(node){
+    if( !node ) return null
+
+    const cloneMap = new Map()
+    const visited = new Set()
+
+    let stack = [node]
+
+    cloneMap.set(node, new Node(node.val))
+
+    while( stack.length ){
+        const top = stack.pop()
+
+        if( visited.has(top) ){
+            continue
+        }
+
+        const cloneHead = cloneMap.get(top)
+
+        for( let neighbor of top.neighbors ){
+            if( cloneMap.has(neighbor) ){
+                cloneHead.neighbors.push( cloneMap.get(neighbor) )
+            } else {
+                const cloneNeighbor = new Node(neighbor.val)
+                cloneHead.neighbors.push(cloneNeighbor)
+                cloneMap.set(neighbor, cloneNeighbor)
+            }
+
+            if( !visited.has(neighbor) ){
+                stack.push(neighbor)
+            }
+        }
+        visited.add(top)
+    }
+    return cloneMap.get(node)
+}
