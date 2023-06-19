@@ -1,0 +1,23 @@
+// Runtime 98 ms Beats 77.97% || Memory 50 MB Beats 13.56%
+
+var constructMaximumBinaryTree = function(nums) {
+    
+    const traverse = (nums) => {
+        if( nums.length == 0 ){
+            return null
+        }
+        let max = Math.max(...nums)
+        let maxIndex = nums.indexOf(max)
+        let left = nums.slice(0, maxIndex)
+        let right = nums.slice(maxIndex + 1)
+
+        let root = new TreeNode(max)
+
+        root.left = traverse(left)
+        root.right = traverse(right)
+
+        return root
+    }
+
+    return traverse(nums)
+};
