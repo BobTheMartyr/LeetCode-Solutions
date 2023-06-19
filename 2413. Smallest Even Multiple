@@ -1,0 +1,5 @@
+// Runtime 52 ms Beats 84.80% || Memory 42.4 MB Beats 12.56%
+
+var smallestEvenMultiple = function(n) {
+    return n % 2 == 0 ? n : n * 2
+};
