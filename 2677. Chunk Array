@@ -1,0 +1,9 @@
+// Runtime 66 ms Beats 44.92% || Memory 44.3 MB Beats 77.31%
+
+var chunk = function(arr, size) {
+    let result = []
+    for( let i = 0; i < arr.length; i += size ){
+        result.push(arr.slice(i, i + size))
+    }
+    return result
+};
