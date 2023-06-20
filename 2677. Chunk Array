@@ -1,4 +1,4 @@
-// Runtime 66 ms Beats 44.92% || Memory 44.3 MB Beats 77.31%
+// Runtime 52 ms Beats 95.70% || Memory 44 MB Beats 92.75%
 
 var chunk = function(arr, size) {
     let result = []
