@@ -1,3 +1,72 @@
+// Same equation but my own
+// Runtime 153 ms Beats 11.88% || Memory 63.8 MB Beats 6.9%
+
+var numIslands = function(grid){
+    let visited = grid.map(row => row.map(cell => false))
+    let islandCount = 0
+
+    for( let i = 0; i < grid.length; i++ ){
+        for( let j = 0; j < grid[i].length; j++ ){
+            if( !visited[i][j] ){
+                if( explore(i, j, grid, visited) ){
+                    islandCount++
+                }
+            }
+        }
+    }
+
+    return islandCount
+}
+
+var explore = function( i, j, grid, visited ){
+
+    let stack = [ [i,j] ]
+    let islandSize = 0
+
+    while( stack.length ){
+        let currNode = stack.pop()
+
+        let [i,j] = currNode
+
+        if( visited[i][j] || grid[i][j] == '0' ){
+            continue
+        }
+
+        visited[i][j] = true
+
+        let neighbors = findNeighbors(i, j, grid, visited)
+        islandSize++
+
+        stack.push(...neighbors)
+    }
+
+    return islandSize > 0
+}
+
+var findNeighbors = function( i, j, grid, visited ){
+    let neighbors = []
+
+    if( i > 0 && !visited[i - 1][j] ){
+        neighbors.push( [i - 1, j] )
+    }
+    if( i < grid.length - 1 && !visited[i + 1][j] ){
+        neighbors.push( [i + 1, j] )
+    }
+    if( j > 0 && !visited[i][j - 1] ){
+        neighbors.push( [i, j - 1] )
+    }
+    if( j < grid[i].length - 1 && !visited [i][j + 1] ){
+        neighbors.push( [i, j + 1] )
+    }
+
+    return neighbors
+}
+
+
+
+**********************************
+
+
 // Runtime 157 ms Beats 11.69% || Memory 62.7 MB Beats 5.2%
 
 var getAdjNeighbors = (i, j, grid, visited) => {
