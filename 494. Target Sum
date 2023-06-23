@@ -1,0 +1,72 @@
+// - Solution that didnt exceed time limit
+// Runtime 2632 ms Beats 34.28% || Memory 42.3 MB Beats 81.70%
+
+var findTargetSumWays = function(nums, target) {
+    const sum = nums.reduce((acc, i) => acc + i);
+
+    if (sum < target || (sum + target) % 2 !== 0 ) return 0;
+
+    const n = (sum + target) / 2;
+
+    if (n < 0) return 0;
+    
+    const dp = new Array(n+1).fill(0);
+    dp[0] = 1;
+
+    nums.forEach((num) => {
+        for (let i = n; i >= num; i--) {
+            dp[i] += dp[i - num]; 
+        }
+    })
+
+    return dp[n];
+};
+
+
+// My solution  - uses DFS like I'm supposed to
+
+
+var findTargetSumWays = function(nums, target) {
+    let count = 0
+
+    var traverse = (node, expression) => {
+        if( !node ){
+            return
+        }
+
+        expression += node.val
+
+        if( !node.left && !node.right ){
+            if( eval( expression ) == target ){
+                count++
+            }
+        }
+
+        traverse(node.left, expression)
+        traverse(node.right, expression)
+    }
+
+    let tree = buildTree(nums)
+
+    traverse(tree, '')
+    return count
+};
+
+
+var buildTree = function( nums ){
+    let root = new TreeNode("")
+
+    var tree = (node, level) => {
+        if( level == nums.length ){
+            return
+        }
+
+        node.left = new TreeNode( `+${nums[level]}` )
+        tree(node.left, level + 1)
+        node.right = new TreeNode( `-${nums[level]}` )
+        tree(node.right, level + 1)
+    }
+
+    tree(root, 0)
+    return root
+}
