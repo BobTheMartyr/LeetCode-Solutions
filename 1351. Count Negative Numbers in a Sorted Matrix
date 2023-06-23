@@ -1,0 +1,13 @@
+// Runtime 48 ms Beats 98.21% || Memory 42.8 MB Beats 98.8%
+
+var countNegatives = function(grid) {
+    let totes = 0
+    for( let i = 0; i < grid.length; i++ ){
+        for( let j = 0; j < grid[i].length; j++ ){
+            if( grid[i][j] < 0 ){
+                totes += 1
+            }
+        }
+    }
+    return totes
+};
