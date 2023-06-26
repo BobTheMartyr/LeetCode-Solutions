@@ -1,0 +1,22 @@
+// Runtime 60 ms Beats 94.53% || Memory 42.5 MB Beats 17.84%
+
+var cancellable = function(fn, args, t) {
+    let stop = false
+    fn(...args)
+
+    const startTimer = () => {
+        setTimeout(() => {
+            fn(...args)
+            if( stop ) return
+            startTimer()
+        }, t)
+    }
+
+    startTimer()
+
+    const stopF = () => {
+        stop = true
+    }
+
+    return stopF
+}
