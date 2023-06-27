@@ -1,0 +1,9 @@
+// Runtime 70 ms Beats 46.16% || Memory 42 MB Beats 58.47%
+
+var addTwoPromises = function( promise1, promise2 ){
+  try {
+    await promise1 + await promise2
+  } catch (error) {
+    throw(error)
+  }
+}
