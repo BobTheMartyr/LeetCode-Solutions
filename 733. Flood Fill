@@ -1,0 +1,48 @@
+// Runtime 74 ms Beats 56.68% || Memory 44.3 MB Beats 65.83%
+
+var floodFill = function(image, sr, sc, color) {
+    if( image[sr][sc] === color ) return image
+    
+    let rootColor = image[sr][sc]
+
+    const explore = (row, col) => {
+        let stack = [ [row, col] ]
+
+        while( stack.length ){
+            let currNode = stack.pop()
+            let [r, c] = currNode
+
+            if( image[r][c] != rootColor ){
+                continue
+            }
+
+            image[r][c] = color
+
+            let neighbors = findNeighbors(r, c, image, rootColor)
+
+            stack.push(...neighbors)
+        }
+    }
+    
+    explore(sr, sc)
+    return image
+};
+
+var findNeighbors = function(row, col, image, rootColor){
+    let neighbors = []
+
+    if( row > 0 && image[row - 1][col] === rootColor ){
+        neighbors.push( [row - 1, col ] )
+    }
+    if( row < image.length - 1 && image[row + 1][col] === rootColor ){
+        neighbors.push( [row + 1, col] )
+    }
+    if( col > 0 && image[row][col-1] === rootColor ){
+        neighbors.push( [row, col - 1] )
+    }
+    if( col < image[row].length - 1 && image[row][col + 1] === rootColor ){
+        neighbors.push( [row, col + 1])
+    }
+
+    return neighbors
+}
