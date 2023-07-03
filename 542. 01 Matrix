@@ -1,0 +1,35 @@
+// Runtime 194 ms Beats 57.82% || Memory 58.1 MB Beats 71.38%
+
+const updateMatrix = function( mat ){
+
+    let queue = []
+
+    for( let i = 0; i < mat.length; i++ ){
+        for( let j = 0; j < mat[i].length; j++ ){
+            if( mat[i][j] === 0 ){
+                queue.push( [i,j,0] )
+            } else {
+                mat[i][j] = Infinity
+            }
+        }
+    }
+
+    let directions = [[-1,0], [1,0], [0, -1], [0,1]]
+
+    while( queue.length ){
+        const [i, j, dist] = queue.shift()
+        if( mat[i][j] > dist ){
+            mat[i][j] = dist
+        }
+
+        directions.forEach(([row, col]) => {
+            if( i + row >= 0 && i + row < mat.length && j + col >= 0 && j + col < mat[0].length ) {
+                if( mat[i+row][j+col] === Infinity ){
+                    queue.push( [i + row, j + col, dist + 1])
+                }
+            }
+        })
+    }
+
+    return mat
+}
