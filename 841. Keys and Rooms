@@ -1,0 +1,22 @@
+// Runtime 57 ms Beats 85.2% || Memory 44.2 MB Beats 66.8%
+
+var canVisitAllRooms = function(rooms){
+    let visited = new Set()
+    visited.add(0)
+
+    var dfs = room => {
+        let stack = [...room]
+        while( stack.length ){
+            let curr = stack.pop()
+            if( visited.has(curr) ){
+                continue
+            }
+            stack.push(...rooms[curr])
+            visited.add(curr)
+        }
+    }
+
+    dfs(rooms[0])
+
+    return visited.size === rooms.length
+}
