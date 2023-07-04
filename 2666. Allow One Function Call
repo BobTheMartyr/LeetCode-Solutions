@@ -1,0 +1,13 @@
+// Runtime 54 ms Beats 80.73% || Memory 41.5 MB Beats 87.55%
+
+var once = function(fn) {
+    let called = false
+    return function(...args){
+        if( called ){
+            return undefined
+        } else {
+            called = true
+            return fn(...args)
+        }
+    }
+}
