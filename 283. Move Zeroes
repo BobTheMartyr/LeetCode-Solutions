@@ -1,0 +1,17 @@
+// Runtime 85 ms Beats 80.82% || Memory 45.7 MB Beats 98.76%
+
+var moveZeroes = function(nums) {
+
+    let j = 0
+    let temp;
+
+    for( let i = 0; i < nums.length; i++ ){
+        if( nums[i] != 0 ){
+           temp = nums[i]
+           nums[i] = nums[j]
+           nums[j] = temp
+           j++ 
+        }
+    }
+    return nums
+};
