@@ -1,0 +1,11 @@
+// Runtime 95 ms Beats 67.26% || Memory 51.5 MB Beats 69.90%
+
+var rotate = function(nums, k) {
+    let newArr = new Array(nums.length)
+    for( let i = 0; i < nums.length; i++ ){
+        newArr[(i+k) % nums.length] = nums[i]
+    }
+    for( let i = 0; i < nums.length; i++ ){
+        nums[i] = newArr[i]
+    }
+};
