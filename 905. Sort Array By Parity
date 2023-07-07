@@ -1,0 +1,29 @@
+//  Runtime 80 ms Beats 42.82% || Memory 44.9 MB Beats 26.98%
+
+// Done easily with filters
+
+var sortArrayByParity = function(nums) {
+    let evens = nums.filter(el => el % 2 == 0)
+    let odds = nums.filter(el => el % 2 != 0)
+    return evens.concat(odds)
+};
+
+
+// Runtime 84 ms Beats 25.14% || Memory 44.4 MB Beats 68.77%
+
+// Sorted in place, no extra space needed
+
+var sortArrayByParity = function( nums ){
+    let i = 0
+    let j = 0
+    while( j < nums.length ){
+        if( nums[j] % 2 == 0 ){
+            let temp = nums[i]
+            nums[i] = nums[j]
+            nums[j] = temp
+            i++
+        }
+        j++
+    }
+    return nums
+}
