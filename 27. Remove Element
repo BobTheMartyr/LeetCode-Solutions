@@ -1,0 +1,28 @@
+// Runtime 56 ms Beats 74.70% || Memory 41.4 MB Beats 93.81%
+
+var removeElement = function( nums, val ){
+    let left = 0
+    let right = nums.length - 1
+
+    while( left <= right ){
+        if( nums[left] == val ){
+            nums[left] = nums[right]
+            right--
+        } else {
+            left++
+        }
+    }
+    return left
+}
+
+
+// Runtime 59 ms Beats 60.19% || Memory 42.3 MB Beats 18.56%
+
+var removeElement = function(nums, val){
+    for( let i = 0; i < nums.length; i++ ){
+        if( nums[i] == val ){
+            nums.splice(i, 1)
+            i--
+        }
+    }
+}
