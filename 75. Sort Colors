@@ -1,0 +1,17 @@
+// Runtime 67 ms Beats 22.71% || Memory 42.6 MB Beats 12.18%
+
+var sortColors = function(nums) {
+    let minIndex;
+    for( let i = 0; i < nums.length; i++ ){
+        minIndex = i
+        for( let j = i + 1; j < nums.length; j++ ){
+            if( nums[j] < nums[minIndex] ){
+                minIndex = j
+            }
+        }
+        let temp = nums[minIndex]
+        nums[minIndex] = nums[i]
+        nums[i] = temp
+    }
+    return nums
+};
