@@ -1,7 +1,6 @@
-//Runtime 90 ms Beats 79.31% || Memory 45.4 MB Beats 9.85%
+// Runtime 92 ms Beats 64.12% || Memory 45.4 MB Beats 5.81%
 
-var insertionSortList = function(head) {
-    
+var insertionSortList = function( head ){
     let vals = []
     while( head ){
         vals.push(head.val)
@@ -9,29 +8,23 @@ var insertionSortList = function(head) {
     }
 
     vals = insertionSort(vals)
-    
     let node = tail = new ListNode()
-    for( let val of vals){
-        node.next = new ListNode(val)
-        node = node.next
+    for( let val of vals ){
+        tail.next = new ListNode(val)
+        tail = tail.next
     }
+    return node.next
+}
 
-    return tail.next
-
-};
-
-var insertionSort = function(arr){
-    let n = arr.length
-    
-    for( let i = 1; i < n; i++ ){
-        let key = arr[i]
+var insertionSort = function( nums ){
+    for( let i = 1; i < nums.length; i++ ){
+        let current = nums[i]
         let j = i - 1
-        while( (j >= 0) && (arr[j] > key) ){
-            arr[j + 1] = arr[j]
+        while( j >= 0 && nums[j] > current ){
+            nums[j + 1] = nums[j]
             j--
         }
-        arr[j + 1] = key
+        nums[j + 1] = current
     }
-    
-    return arr
+    return nums
 }
