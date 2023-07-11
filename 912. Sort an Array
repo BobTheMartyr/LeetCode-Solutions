@@ -1,3 +1,41 @@
+// Heapsort
+// Runtime 263 ms Beats 81.13% || Memory 61.2 MB Beats 99.10%
+
+var sortArray = function( nums ){
+    for( let i = Math.floor(nums.length/2) - 1; i >= 0; i-- ){
+        maxHeapify(nums, nums.length, i)
+    }
+    
+    for( let i = nums.length - 1; i > 0; i-- ){
+        let temp = nums[i]
+        nums[i] = nums[0]
+        nums[0] = temp
+        maxHeapify( nums, i, 0)
+    }
+    return nums
+}
+
+var maxHeapify = function( arr, heapSize, index ){
+    let left = 2 * index + 1
+    let right = 2 * index + 2
+    let largest = index
+    
+    if( left < heapSize && arr[left] > arr[largest] ){
+        largest = left
+    }
+    if( right < heapSize && arr[right] > arr[largest] ){
+        largest = right
+    }
+    if( largest != index ){
+        let temp = arr[index]
+        arr[index] = arr[largest]
+        arr[largest] = temp
+        maxHeapify( arr, heapSize, largest )
+    }
+}
+
+**************************
+
 // Merge Sort
 // Runtime 1218 ms Beats 31.38% || Memory 66.9 MB Beats 21.37%
 
@@ -33,6 +71,8 @@ let merge = function(left, right){
 
     return [...sortedArr, ...left, ...right]
 }
+
+***************************************
 
 // Quick Sort
 // Runtime 6620 ms Beats 15.90% || Memory 66.6 MB Beats 22.66%
