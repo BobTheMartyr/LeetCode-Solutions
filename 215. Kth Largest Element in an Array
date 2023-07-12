@@ -1,0 +1,46 @@
+// Runtime 165 ms Beats 58.47% || Memory 49.2 MB Beats 87.44%
+
+
+var findKthLargest = function( nums, k ){
+    for( let i = Math.floor( nums.length / 2) - 1; i >= 0; i-- ){
+        maxHeapify( nums, nums.length, i )
+    }
+
+    for( let i = nums.length - 1; i > 0; i-- ){
+        let temp = nums[i]
+        nums[i] = nums[0]
+        nums[0] = temp
+        maxHeapify( nums, i, 0)
+    }
+    return nums.slice(-k)[0]
+}
+
+var maxHeapify = function( arr, heapSize, index ){
+    let left = 2*index + 1
+    let right = 2*index + 2
+    let largest = index
+
+    if( left < heapSize && arr[left] > arr[largest] ){
+        largest = left
+    }
+    if( right < heapSize && arr[right] > arr[largest] ){
+        largest = right
+    }
+    if( largest != index ){
+        let temp = arr[index]
+        arr[index] = arr[largest]
+        arr[largest] = temp
+        maxHeapify( arr, heapSize, largest)
+    }
+}
+
+
+
+****
+
+// Runtime 191 ms Beats 29.8% || Memory 51.9 MB Beats 33.90%
+
+var findKthLargest = function(nums, k) {
+    nums.sort((a, b ) => a - b)
+    return nums.slice(-k)[0]
+};
