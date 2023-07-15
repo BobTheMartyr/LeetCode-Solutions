@@ -1,4 +1,28 @@
+// Runtime 57 ms Beats 73.20% || Memory 42.1 MB Beats 44.83%
+// Counting Sort
+
+var sortColors = function( nums ){
+    let maxValue = Math.max(...nums)
+    let counts = new Array(maxValue + 1).fill(0)
+
+    for( let num of nums ){
+        counts[num]++
+    }
+
+    let startingIndex = 0
+    for( let i = 0; i < counts.length; i++ ){
+        while( counts[i] > 0 ){
+            nums[startingIndex] = i
+            startingIndex++
+            counts[i]--
+        }
+    }
+    return nums
+}
+
+
 // Runtime 67 ms Beats 22.71% || Memory 42.6 MB Beats 12.18%
+// Selection Sort
 
 var sortColors = function(nums) {
     let minIndex;
