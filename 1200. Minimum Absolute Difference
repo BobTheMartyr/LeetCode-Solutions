@@ -1,3 +1,38 @@
+// Runtime 156 ms Beats 89.71% || Memory 86.1 MB Beats 5.39%
+
+var minimumAbsDifference = function(arr){
+    let minElement = arr[0], maxElement = arr[0]
+    for( let num of arr ){
+        minElement = Math.min(minElement, num)
+        maxElement = Math.max(maxElement, num)
+    }
+    let shift = -minElement
+    let line = new Array(maxElement - minElement + 1).fill(0)
+    let answer = []
+
+    for( num of arr ){
+        line[num + shift] = 1
+    }
+
+    let minPairDiff = maxElement - minElement
+    let prev = 0
+
+    for( let curr = 1; curr <= maxElement + shift; curr++ ){
+        if( line[curr] == 0 ) continue
+        if( curr - prev === minPairDiff ){
+            answer.push( [prev - shift, curr - shift] )
+        } else if( curr - prev < minPairDiff ){
+            answer = []
+            minPairDiff = curr - prev
+            answer.push( [prev - shift, curr - shift] )
+        }
+        prev = curr
+    }
+    return answer
+}
+
+**************
+
 // Runtime 159 ms Beats 85.78% || Memory 54.8 MB Beats 40.20%
 
 var minimumAbsDifference = function(arr) {
