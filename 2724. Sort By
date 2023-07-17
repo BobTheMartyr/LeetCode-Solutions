@@ -1,0 +1,16 @@
+// Runtime 145 ms Beats 82.24% || Memory 55.5 MB Beats 97.45%
+
+var sortBy = function(arr, fn) {
+    function swap(a,b){
+        return (fn(a) < fn(b) ? -1 : 1)
+    }
+    return arr.sort(swap)
+};
+
+
+
+// Runtime 156 ms Beats 41.3% || Memory 57 MB Beats 19.9%
+
+var sortBy = function(arr, fn) {
+    return arr.sort((a,b) => fn(a) - fn(b))
+};
