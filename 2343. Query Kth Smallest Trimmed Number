@@ -1,0 +1,14 @@
+// Runtime 1585 ms Beats 50% || Memory 53.4 MB Beats 50%
+
+var smallestTrimmedNumbers = function(nums, queries) {
+  let res = []
+  for( const [k, trim] of queries ){
+    let b = nums.map((s, i) => [s.slice(s.length - trim), i])
+    b.sort((x,y) => {
+      if( x[0] == y[0] ) return x[1] - y[1]
+      return x[0].localeCompare(y[0])
+    })
+    res.push(b[k - 1][1])
+  }
+  return res
+};
