@@ -1,0 +1,47 @@
+// Runtime 5415 ms Beats 5.59% || Memory 59.1 MB Beats 38.46%
+
+var maximumGap = function(nums) {
+    if( nums.length < 2 ) return 0
+
+    let sortedArr = LSDRadixSort(nums)
+
+    let max = 0
+    for( let i = 1; i < sortedArr.length; i++ ){
+        if( sortedArr[i] - sortedArr[i - 1] > max ){
+            max = sortedArr[i] - sortedArr[i - 1]
+        }
+    }
+
+    return max
+};
+
+
+var LSDRadixSort = function( nums ){
+    let max = Math.max(...nums)
+    for( let exp = 1; max / exp > 0; exp *= 10 ){
+        countingSort(nums, exp)
+    }
+    return nums
+}
+
+var countingSort = function( arr, exp ){
+    let output = new Array(arr.length).fill(0)
+    let count = new Array(10).fill(0)
+
+    for( let i = 0; i < arr.length; i++ ){
+        count[Math.floor(arr[i] / exp) % 10]++
+    }
+
+    for( let i = 1; i <= 10; i++ ){
+        count[i] += count[i - 1]
+    }
+
+    for( let i = arr.length - 1; i >= 0; i-- ){
+        output[count[Math.floor(arr[i] / exp) % 10] - 1] = arr[i]
+        count[Math.floor(arr[i] / exp) % 10]--
+    }
+
+    for( let i = 0; i < arr.length; i++ ){
+        arr[i] = output[i]
+    }
+}
