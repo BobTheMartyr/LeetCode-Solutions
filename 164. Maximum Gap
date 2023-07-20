@@ -1,3 +1,19 @@
+// Runtime 290 ms Beats 58.4% || Memory 56 MB Beats 93.71%
+// Not what the problem asks for, but faster than making it run in linear time
+
+var maximumGap = function(nums){
+    nums.sort((a,b)=>a-b)
+    let max = 0
+    for( let i = 1; i < nums.length; i++ ){
+        if( nums[i] - nums[i - 1] > max ){
+            max = nums[i] - nums[i - 1]
+        }
+    }
+    return max
+}
+
+************************
+
 // Runtime 5415 ms Beats 5.59% || Memory 59.1 MB Beats 38.46%
 
 var maximumGap = function(nums) {
