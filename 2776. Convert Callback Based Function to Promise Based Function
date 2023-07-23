@@ -1,0 +1,16 @@
+Runtime 57 ms Beats 60.53% || Memory 41.5 MB Beats 80.26%
+
+var promisify = function(fn) {
+    return async function(...args){
+        return new Promise( (resolve, reject) => {
+            const handler = (value, error) => {
+                if( error ){
+                    reject(error)
+                } else {
+                    resolve(value)
+                } 
+            }
+            fn(handler, ...args)
+        })
+    }
+};
