@@ -9,3 +9,17 @@ curry = function(fn){
         }
     }
 }
+
+// Runtime 80 ms Beats 23.21% || Memory 47.6 MB Beats 89.89%
+
+var curry = function(fn) {
+    return function curried(...args) {
+        if( args.length >= fn.length ){
+            return fn(...args)
+        } else {
+            return function( ...newArgs ){
+                return curried( ...args, ...newArgs)
+            }
+        }
+    };
+};
