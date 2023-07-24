@@ -1,0 +1,5 @@
+// Runtime 60 ms Beats 72.73% || Memory 44.3 MB Beats 60.14%
+
+Array.prototype.upperBound = function(target) {
+    return this.lastIndexOf(target)
+};
