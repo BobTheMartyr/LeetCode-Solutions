@@ -1,0 +1,11 @@
+// Runtime 62ms Beats 92.84% || Memory 48.4 MB Beats 65.97%
+
+curry = function(fn){
+    return function curried(...args){
+        if( fn.length > args.length ){
+            return (...args2) => curried(...args, ...args2)
+        } else {
+            return fn(...args)
+        }
+    }
+}
