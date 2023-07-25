@@ -1,0 +1,16 @@
+// Runtime 94 ms Beats 39.29% || Memory 51.7 MB Beats 32.14%
+
+var smallestCommonElement = function(mat) {
+    let map = new Map()
+    for( let i = 0; i < mat.length; i++ ){
+        for( let el of mat[i] ){
+            map.set( el, (map.get(el) || 0) + 1)
+        }
+    }
+    for( let [key, value] of map ){
+        if( value === mat.length ){
+            return key
+        }
+    }
+    return -1
+};
