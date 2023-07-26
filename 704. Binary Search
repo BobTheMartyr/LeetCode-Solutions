@@ -1,3 +1,25 @@
+// Runtime 60 ms Beats 77.12% || Memory 44.5 MB Beats 95.81%
+
+var search = function(nums, target) {
+    let left = 0
+    let right = nums.length - 1
+
+    while( left <= right ){
+        let mid = Math.floor(( left + right ) / 2)
+        if( nums[mid] == target ){
+            return mid
+        } else {
+            if( target < nums[mid] ){
+                right = mid - 1
+            } else {
+                left = mid + 1
+            }
+        }
+    }
+    return -1
+};
+
+
 // Runtime 70 ms Beats 49.84% || Memory 45.4 MB  Beats 15.50%
 
 var search = function(nums, target) {
