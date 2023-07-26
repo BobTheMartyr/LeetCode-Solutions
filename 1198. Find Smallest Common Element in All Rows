@@ -1,3 +1,40 @@
+// Runtime 72 ms Beats 96.55% || Memory 47.2 MB Beats 93.10%
+
+var smallestCommonElement = function(mat){
+
+    for( let i = 0; i < mat[0].length; i++ ){
+        let found = true
+        let target = mat[0][i]
+        for( let j = 1; j < mat.length && found; j++ ){
+            found = binarySearch(mat[j], target)
+            if( !found ) break
+        }
+        if( found ){
+            return mat[0][i]
+        }
+    }
+    return -1
+}
+
+var binarySearch = function( arr, target ){
+    let left = 0
+    let right = arr.length - 1
+
+    while( left <= right ){
+        let mid = Math.floor(( right + left ) /2 )
+        if( arr[mid] === target ){
+            return true
+        } else {
+            if( target < arr[mid] ){
+                right = mid - 1
+            } else {
+                left = mid + 1
+            }
+        }
+    }
+    return false
+}
+
 // Runtime 94 ms Beats 39.29% || Memory 51.7 MB Beats 32.14%
 
 var smallestCommonElement = function(mat) {
