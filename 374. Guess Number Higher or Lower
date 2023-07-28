@@ -1,0 +1,18 @@
+// Runtime 55 ms Beats 70.46% || Memory 42.5 MB Beats 5.59%
+
+var guessNumber = function(n) {
+    let left = 1
+    let right = n
+
+    while( left <= right ){
+        let num = left + Math.floor(( right - left ) / 2)
+        let ans = guess(num)
+        if( ans === 0 ) {
+            return num
+        } else if( ans === -1 ){
+            right = num - 1
+        } else {
+            left = num + 1
+        }
+    }
+};
