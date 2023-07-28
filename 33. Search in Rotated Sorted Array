@@ -1,32 +1,28 @@
-// Runtime 61 ms Beats 51.2% || Memory 42.5 MB Beats 17.5%
+// Runtime 49 ms Beats 95.11% || Memory 42.5 MB Beats 14.12%
 
-var search = function(nums, target){
-
+var search = function(nums, target) {
     let start = 0
     let end = nums.length - 1
-
-
+    
     while( start <= end ){
-        let mid = Math.floor((start + end)/2)
-
-        if( nums[mid] === target ){
-            return mid
-        }
+        let mid = start + Math.floor((end - start) / 2)
+        
+        if( nums[mid] === target ) return mid
+        
         if( nums[start] <= nums[mid] ){
             if( nums[start] <= target && target <= nums[mid] ){
                 end = mid - 1
             } else {
                 start = mid + 1
             }
-        }
-
-        else {
+        } else {
             if( nums[mid] <= target && target <= nums[end] ){
                 start = mid + 1
             } else {
                 end = mid - 1
             }
+            
         }
     }
     return -1
-}
+};
