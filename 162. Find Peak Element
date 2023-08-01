@@ -1,0 +1,9 @@
+// Runtime 49 ms Beats 92.36% || Memory 41.9 MB Beats 65.90%
+
+var findPeakElement = function(nums){
+    let i = 0
+    while( nums[i] < nums[i + 1] ){
+      i++
+    }
+    return i
+}
