@@ -1,5 +1,23 @@
-// Runtime 49 ms Beats 92.36% || Memory 41.9 MB Beats 65.90%
+// Runtime 43 ms Beats 98.82% || Memory 41.1 MB Beats 99.32%
+// Binary Search O(N logN)
 
+var findPeakElement = function( nums ){
+    let left = 0
+    let right = nums.length - 1
+    while( left < right ){
+        let mid = (right + left) / 2
+        if( nums[mid] > nums[mid + 1] ){
+            right = mid
+        } else {
+            left = mid + 1
+        }
+    }
+    return left
+}
+
+
+// Runtime 49 ms Beats 92.36% || Memory 41.9 MB Beats 65.90%
+// Linear O(N)
 var findPeakElement = function(nums){
     let i = 0
     while( nums[i] < nums[i + 1] ){
