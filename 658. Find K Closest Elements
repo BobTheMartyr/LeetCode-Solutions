@@ -1,0 +1,44 @@
+// Runtime 76 ms Beats 95.58% || Memory 49.4 MB Beats 23.30%
+
+var findClosestElements = function(arr, k, x) {
+    let result = []
+    if( arr.length == k ){
+        for( let el in arr ){
+            result.push(arr[el])
+        }
+        return result
+    }
+
+    let left = 0
+    let right = arr.length
+    while( left < right ){
+        let mid = left + Math.floor((right - left)/2)
+        if( arr[mid] >= x ){
+            right = mid
+        } else {
+            left = mid + 1
+        }
+    }
+
+    left -=1
+    right = left + 1
+
+    while( right - left - 1 < k ){
+        if( left == -1 ){
+            right += 1
+            continue
+        }
+
+        if( right == arr.length || Math.abs(arr[left] - x) <= Math.abs(arr[right] - x) ){
+            left -= 1
+        } else {
+            right += 1
+        }
+    }
+
+    for( let i = left + 1; i < right; i++ ){
+        result.push(arr[i])
+    }
+
+    return result
+};
