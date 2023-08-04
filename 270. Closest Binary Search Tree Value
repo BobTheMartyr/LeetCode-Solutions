@@ -1,0 +1,14 @@
+// Runtime 56 ms Beats 92.50% || Memory 45.3 MB Beats 87.50%
+
+var closestValue = function(root, target) {
+    let val, closest = root.val
+    
+    while( root != null ){
+        val = root.val
+        
+        closest = Math.abs( val - target ) < Math.abs( closest - target ) || Math.abs( val - target ) == Math.abs( closest - target ) && val < closest ? val : closest
+        
+        root = target < val ? root.left : root.right
+    }
+    return closest
+};
