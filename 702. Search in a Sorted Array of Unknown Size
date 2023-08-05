@@ -1,0 +1,22 @@
+// Runtime 66 ms Beats 45.45% || Memory 45.8 MB Beats 10.91%
+
+var search = function (reader, target) {
+    let left = 0
+    let right = left
+    while( reader.get(right) != 2147483647 ){
+        right++
+    }
+    while( left <= right ){
+        let mid = left + Math.floor((right - left)/2)
+        let val = reader.get(mid)
+        console.log(mid, val)
+        if( val == target ){
+            return mid
+        } else if( target < val ){
+            right = mid - 1
+        } else {
+            left = mid + 1
+        }
+    }
+    return -1
+};
