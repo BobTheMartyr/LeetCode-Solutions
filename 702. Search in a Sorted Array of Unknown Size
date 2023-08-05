@@ -1,5 +1,27 @@
-// Runtime 66 ms Beats 45.45% || Memory 45.8 MB Beats 10.91%
+// Runtime 57 ms Beats 89.9% || Memory 45.7 MB Beats 10.91%
+// Kind of cheaty way, using the constraints to determine the maximum size of the array
 
+var search = function( reader, target ){
+    let left = 0
+    let right = Math.pow(10, 4) + 1
+
+    while( left <= right ){
+        let mid = left + Math.floor((right - left) /2)
+        let val = reader.get(mid)
+
+        if( val == target ){
+            return mid
+        } else if( target < val ){
+            right = mid - 1
+        } else {
+            left = mid + 1
+        }
+    }
+    return -1
+}
+
+// Runtime 66 ms Beats 45.45% || Memory 45.8 MB Beats 10.91%
+// Works but not in the spirit of the problem
 var search = function (reader, target) {
     let left = 0
     let right = left
