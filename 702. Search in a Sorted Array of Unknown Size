@@ -1,3 +1,30 @@
+// Runtime 55 ms Beats 92.59% || Memory 44.7 MB Beats 90.74%
+// The way the spirit of the problem intended
+
+var search = function (reader, target) {
+    let left = 0
+    let right = 1
+    if( reader.get(left) == target ) return left
+    if( reader.get(right) == target ) return right
+
+    while( reader.get(right) <= target ){
+        right *= 2
+    }
+
+    while( left <= right ){
+        let mid = left + Math.floor((right - left) /2)
+        let val = reader.get(mid)
+        if( val == target ){
+            return mid
+        } else if( val < target ){
+            left = mid + 1
+        } else {
+            right = mid - 1
+        }
+    }
+    return -1
+};
+
 // Runtime 57 ms Beats 89.9% || Memory 45.7 MB Beats 10.91%
 // Kind of cheaty way, using the constraints to determine the maximum size of the array
 
@@ -22,6 +49,7 @@ var search = function( reader, target ){
 
 // Runtime 66 ms Beats 45.45% || Memory 45.8 MB Beats 10.91%
 // Works but not in the spirit of the problem
+
 var search = function (reader, target) {
     let left = 0
     let right = left
