@@ -1,12 +1,11 @@
-// Runtime 54 ms Beats 77.77% || Memory 42.3 MB Beats 27.79%
+// Runtime 44 ms Beats 97.28% || Memory 41.9 MB Beats 57.20%
 
 var findMin = function(nums) {
-    let left = 0 
+    let left = 0
     let right = nums.length - 1
-
+    
     while( left < right ){
-        let mid = left + Math.floor((right - left) /2)
-
+        let mid = left + Math.floor((right - left) / 2)
         if( nums[mid] > nums[right] ){
             left = mid + 1
         } else {
@@ -14,4 +13,4 @@ var findMin = function(nums) {
         }
     }
     return nums[left]
-};
+}
