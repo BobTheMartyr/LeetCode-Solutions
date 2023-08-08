@@ -1,3 +1,36 @@
+// Runtime 42 ms Beats 99.59% || Memory 44.1 MB Beats 17.31%
+// Binary Search Explore Card
+
+var intersection = function(nums1, nums2) {
+    nums2 = nums2.sort((a,b) => a - b)
+    let res = new Set()
+    for( let i = 0; i < nums1.length; i++ ){
+        let ans = binarySearch(nums2, nums1[i] )
+        if( ans != undefined ){
+            res.add(ans)
+        }
+    }
+    return Array.from(res)
+};
+
+var binarySearch = function( arr, target ){
+    let left = 0
+    let right = arr.length - 1
+    while( left <= right ){
+        let mid = left + Math.floor((right - left) /2)
+        if( arr[mid] == target ){
+            return arr[mid]
+        } else if( arr[mid] < target ){
+            left = mid + 1
+        } else {
+            right = mid - 1
+        }
+    }
+}
+
+
+
+
 // Runtime 65 ms Beats 81.96% || Memory 42.3 MB Beats 83.49%
 
 var intersection = function(nums1, nums2){
