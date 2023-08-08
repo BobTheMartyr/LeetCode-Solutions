@@ -1,0 +1,22 @@
+// Runtime 52 ms Beats 94.70% || Memory 43.9 MB Beats 53.87%
+// Two Pointer solution I stole because its neat
+
+var intersect = function(nums1, nums2) {
+    let sorted1 = nums1.sort((a,b) => a - b)
+    let sorted2 = nums2.sort((a,b) => a - b).reverse()
+    let joined = sorted1.concat(sorted2)
+    let left = 0
+    let right = joined.length - 1
+    let res = []
+
+    while( left < right && left < sorted1.length && (right - sorted1.length) >= 0){
+        if( joined[left] == joined[right] ){
+            res.push(joined[left])
+            left++
+            right--
+            continue
+        }
+        joined[left] < joined[right] ? left++ : right--
+    }
+    return res
+}
