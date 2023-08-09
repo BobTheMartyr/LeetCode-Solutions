@@ -1,0 +1,27 @@
+// Runtime 61 ms Beats 62.34% || Memory 42.9 MB Beats 53.41%
+
+var twoSum = function(nums, target) {
+    for(let i = 0; i < nums.length; i++ ){
+        let val = binarySearch(nums, target - nums[i] )
+        if( val != undefined && val == i ){
+            return [i + 1, val + 2]
+        } else if( val != undefined ) {
+            return [i + 1, val + 1]
+        }
+    }
+};
+
+var binarySearch = function( nums, target ){
+    let left = 0
+    let right = nums.length - 1
+    while( left <= right ){
+        let mid = left + Math.floor((right - left) /2)
+        if( nums[mid] == target ){
+            return mid
+        } else if( nums[mid] > target ){
+            right = mid - 1
+        } else {
+            left = mid + 1
+        }
+    }
+}
