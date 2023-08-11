@@ -1,0 +1,32 @@
+// Runtime 72 ms Beats 90.48% || Memory 70 MB Beats 5.49%
+// Faster but not in the spirit of the Binary Search card
+
+var findDuplicate = function( nums ){
+    let map = new Map()
+    for( let el of nums ){
+        if( map.has(el) ){
+            return el
+        } else {
+            map.set(el)
+        }
+    }
+}
+
+// Runtime 190 ms Beats 20.54% || Memory 54.5 MB Beats 39.12%
+// Slower but is a Binary Search
+
+var findDuplicate = function(nums) {
+    nums = nums.sort((a,b) => a - b)
+    let left = 0
+    let right = nums.length - 1
+    while( left <= right ) {
+        if( nums[left] == nums[left + 1] ){
+            return nums[left]
+        } else if( nums[right] == nums[right - 1] ){
+            return nums[right]
+        } else {
+            left++
+            right--
+        }
+    }
+};
