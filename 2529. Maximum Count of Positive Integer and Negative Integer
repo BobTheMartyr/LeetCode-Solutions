@@ -1,0 +1,35 @@
+Runtime 55 ms Beats 81.2% || Memory 44.6 MB Beats 30.31%
+
+var maximumCount = function( nums ){
+    return Math.max( upperBound(nums), lowerBound(nums) )
+}
+
+function upperBound(nums){
+    if( nums[0] >= 0 ) return 0
+    let left = 0
+    let right = nums.length - 1
+    while( left < right ){
+        let mid = Math.ceil((right + left) / 2)
+        if( nums[mid] < 0 ){
+            left = mid
+        } else {
+            right = mid - 1
+        }
+    }
+    return left + 1
+}
+
+function lowerBound(nums){
+    if( nums[nums.length -1] <= 0 ) return 0
+    let left = 0
+    let right = nums.length - 1
+    while( left < right ){
+        let mid = Math.floor((right + left) / 2)
+        if( nums[mid] > 0 ){
+            right = mid
+        } else {
+            left = mid + 1
+        }
+    }
+    return nums.length - left
+}
