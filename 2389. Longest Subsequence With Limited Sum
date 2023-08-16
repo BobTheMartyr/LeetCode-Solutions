@@ -1,3 +1,32 @@
+// Runtime 84 ms Beats 47.90% || Memory 43.9 MB Beats 98.95%
+// Better but still not great
+
+var answerQueries = function(nums, queries) {
+    nums = nums.sort((a,b) => a - b)
+    let res = []
+    let total = nums.reduce((t,c) => t + c)
+    for( let i = 0; i < queries.length; i++ ){
+        res.push( binarySearch(nums, queries[i], total) )
+    }
+    return res
+};
+
+var binarySearch = (nums, target, total) => {
+    let left = 0
+    let right = nums.length - 1
+
+    while( left <= right ){
+        if( total > target ){
+            total -= nums[right]
+            right--
+        } else if( total <= target ){
+            return right + 1
+        }
+    }
+    return 0
+}
+
+
 // Runtime 6441 ms Beats 5.26% || Memory 49.4 MB Beats 5.26%
 // It sucks but it works
 
