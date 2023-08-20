@@ -1,0 +1,29 @@
+// Runtime 58 ms Beats 70.23% || Memory 43.9 MB Beats 73.2%
+
+var kWeakestRows = function(mat, k) {
+    let soldiers = []
+    for( let i = 0; i < mat.length; i++ ){
+        soldiers.push([i, binarySearch(mat[i])])
+    }
+    soldiers = soldiers.sort((a,b) => a[1] - b[1])
+    let res = []
+    for( let i = 0; i < k; i++ ){
+        res.push(soldiers[i][0])
+    }
+    return res
+};
+
+var binarySearch = function( arr ){
+    let left = 0
+    let right = arr.length - 1
+
+    while( left <= right ){
+        let mid = left + Math.floor((right - left) /2)
+        if( arr[mid] != 1 ){
+            right = mid - 1
+        } else {
+            left = mid + 1
+        }
+    }
+    return left
+}
