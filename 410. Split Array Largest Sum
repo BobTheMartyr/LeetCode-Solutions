@@ -1,0 +1,41 @@
+// Runtime 49 ms Beats 85.17% || Memory 42.2 MB Beats 63.16%
+
+var minimumSubarraysRequired = function(nums, maxSumAllowed) {
+    let sum = 0 
+    let splitsRequired = 0
+
+    for( let i = 0; i < nums.length; i++ ){
+        if( sum + nums[i] <= maxSumAllowed ){
+            sum += nums[i]
+        } else {
+            sum = nums[i]
+            splitsRequired++
+        }
+    }
+    return splitsRequired + 1
+};
+
+var splitArray = function( nums, m ){
+    let sum = 0
+    let maxElement = Number.MIN_VALUE
+    for( let i = 0; i < nums.length; i++ ){
+        sum += nums[i]
+        maxElement = Math.max(maxElement, nums[i])
+    }
+
+    let left = maxElement
+    let right = sum
+    let minimumLargestSplitSum = 0
+
+    while( left <= right ){
+        let maxSumAllowed = left + Math.floor((right - left) /2)
+
+        if( minimumSubarraysRequired(nums ,maxSumAllowed) <= m ){
+            right = maxSumAllowed - 1
+            minimumLargestSplitSum = maxSumAllowed
+        } else {
+            left = maxSumAllowed + 1
+        }
+    }
+    return minimumLargestSplitSum
+}
