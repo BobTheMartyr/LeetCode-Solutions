@@ -1,0 +1,49 @@
+// Runtime 138 ms Beats 87.50% || Memory 51.4 MB Beats 78.69%
+
+class MyHashSet{
+    constructor(){
+        this.keyRange = 769
+        this.bucketArray = new Array(this.keyRange)
+        for( let i = 0; i < this.keyRange; i++ ){
+            this.bucketArray[i] = new Bucket()
+        }
+    }
+    
+    hash(key){
+        return key % this.keyRange
+    }
+    add(key){
+        let bucketIndex = this.hash(key)
+        this.bucketArray[bucketIndex].insert(key)
+    }
+    remove(key){
+        let bucketIndex = this.hash(key)
+        this.bucketArray[bucketIndex].delete(key)
+    }
+    contains(key){
+        let bucketIndex = this.hash(key)
+        return this.bucketArray[bucketIndex].exists(key)
+    }
+}
+
+class Bucket{
+    constructor(){
+        this.container = []
+    }
+    insert(key){
+        let index = this.container.indexOf(key)
+        if( index === -1 ){
+            this.container.unshift(key)
+        }
+    }
+    delete(key){
+        let index = this.container.indexOf(key)
+        if( index != -1 ){
+            this.container.splice(index, 1)
+        }
+    }
+    exists(key){
+        let index = this.container.indexOf(key)
+        return index != -1
+    }
+}
