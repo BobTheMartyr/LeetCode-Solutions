@@ -1,0 +1,53 @@
+class MyHashMap{
+    constructor(){
+        this.keyRange = 769
+        this.bucketArray = new Array(this.keyRange)
+        for( let i = 0; i < this.keyRange; i++ ){
+            this.bucketArray[i] = new Bucket()
+        }
+    }
+    hash(key){
+        return key % this.keyRange 
+    }
+    put(key, value){
+        let bucketIndex = this.hash(key)
+        this.bucketArray[bucketIndex].insert(key, value)
+    }
+    get(key){
+        let bucketIndex = this.hash(key)
+        return this.bucketArray[bucketIndex].find(key)
+    }
+    remove(key){
+        let bucketIndex = this.hash(key)
+        this.bucketArray[bucketIndex].delete(key)
+    }
+}
+
+
+class Bucket{
+    constructor(){
+        this.container = []
+    }
+    insert(key, value){
+        let index = this.container.findIndex(el => el[0] == key)
+        if( index != -1 ){
+            this.container[index][1] = value
+        } else {
+            this.container.push([key, value])
+        }
+    }
+    delete(key){
+        let index = this.container.findIndex(el => el[0] == key)
+        if( index != -1 ){
+            this.container.splice(index, 1)
+        }
+    }
+    find(key){
+        let element = this.container.find(el => el[0] == key)
+        if( element == undefined ){
+            return -1 
+        } else {
+            return element[1]
+        }
+    }
+}
