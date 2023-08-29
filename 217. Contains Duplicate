@@ -1,3 +1,21 @@
+// Runtime 68 ms Beats 96.27% || Memory 53.1 MB Beats 67.27%
+
+var containsDuplicate = function(nums){
+
+    let map = new Set()
+
+    for( let i = 0; i < nums.length; i++ ){
+        if( map.has(nums[i]) ){
+            return true
+        } else {
+            map.add(nums[i])
+        }
+    }
+    return false
+}
+
+**********************
+
 var containsDuplicate = function(nums) {
     return nums.filter((el, i, arr) => arr.indexOf(arr[i]) != arr.lastIndexOf(arr[i])).length > 0 ? true : false
 };
