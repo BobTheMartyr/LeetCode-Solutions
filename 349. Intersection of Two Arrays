@@ -28,7 +28,20 @@ var binarySearch = function( arr, target ){
     }
 }
 
+// Runtime 59 ms Beats 53.2% || Memory 43.2 MB Beats 54.12%
+// Hash Table Explore Card
 
+var intersection = function( nums1, nums2 ){
+    let nums1Set = new Set(nums1)
+    let nums2Set = new Set(nums2)
+    let res = []
+    for( value of nums1Set ){
+        if( nums2Set.has(value) ){
+            res.push(value)
+        }
+    }
+    return res
+}
 
 
 // Runtime 65 ms Beats 81.96% || Memory 42.3 MB Beats 83.49%
