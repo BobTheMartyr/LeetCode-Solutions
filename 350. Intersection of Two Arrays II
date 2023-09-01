@@ -1,3 +1,28 @@
+// Runtime 47 ms Beats 96.72% || Memory 44.1 MB Beats 47.66%
+// Solution for Hash Table Explore Card
+
+var intersect = function( nums1, nums2 ){
+    let largest = nums1.length >= nums2.length ? nums1 : nums2
+    let smallest = nums1.length < nums2.length ? nums1 : nums2
+    let map = new Map()
+    for( let i = 0; i < largest.length; i++ ){
+        if( map.has( largest[i] ) ){
+            map.set( largest[i], map.get(largest[i]) + 1 )
+        } else {
+            map.set(largest[i], 1)
+        }
+    }
+    let result = []
+    for( let i = 0; i < smallest.length; i++ ){
+        if( map.get(smallest[i]) > 0 ){
+            map.set(smallest[i], map.get(smallest[i]) - 1)
+            result.push(smallest[i])
+        }
+    }
+    return result
+}
+
+
 // Runtime 52 ms Beats 94.70% || Memory 43.9 MB Beats 53.87%
 // Two Pointer solution I stole because its neat
 
