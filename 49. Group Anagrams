@@ -1,0 +1,13 @@
+// Runtime 95 ms Beats 95.36% || Memory 52.7 MB Beats 77.74%
+
+var groupAnagrams = function(strs) {
+    let map = new Map()
+    for( let i = 0; i < strs.length; i++ ){
+        if( map.has( strs[i].split('').sort().join('') )){
+            map.get( strs[i].split('').sort().join('') ).push( strs[i] )
+        } else {
+            map.set( strs[i].split('').sort().join(''), [strs[i]] )
+        }
+    }
+    return Array.from( map.values() )
+};
