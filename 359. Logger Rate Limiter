@@ -1,0 +1,21 @@
+// Runtime 132 ms Beats 75% || Memory 51.7 MB Beats 95.65%
+
+class Logger{
+    constructor(){
+        this.map = new Map()
+    }
+    
+    shouldPrintMessage(timestamp, message){
+        if( this.map.has(message) ){
+            if( timestamp < this.map.get(message) ){
+                return false
+            } else if( timestamp >= this.map.get(message) ){
+                this.map.set( message, timestamp + 10)
+                return true
+            }
+        } else {
+            this.map.set(message, timestamp + 10)
+            return true
+        }
+    }
+}
