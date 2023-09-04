@@ -1,0 +1,21 @@
+// Runtime 90 ms Beats 75.97% || Memory 57.1 MB Beats 31.82%
+
+var findDuplicateSubtrees = function(root) {
+    let result = []
+    let seen = {}
+
+    const dfs = node => {
+        if(!node){
+            return '#'
+        }
+        let key = node.val + '/' + dfs(node.left) + '/' + dfs(node.right)
+        seen[key] ? seen[key]++ : seen[key] = 1
+        if( seen[key] == 2 ){
+            result.push(node)
+        }
+        return key
+    }
+
+    dfs(root)
+    return result
+};
