@@ -1,3 +1,21 @@
+// Runtime 47 ms Beats 90.78% || Memory 42 MB Beats 70.53%
+
+var numJewelsInStones = function(jewels, stones){
+    let matches = 0
+    let jewelSet = new Set()
+    for( let i = 0; i < jewels.length; i++ ){
+        jewelSet.add(jewels[i])
+    }
+    for( let i = 0; i < stones.length; i++ ){
+        if( jewelSet.has( stones[i]) ){
+            matches++
+        }
+    }
+    return matches
+}
+
+
+**************************
 var numJewelsInStones = function(jewels, stones) {
     let matches = 0
         for( let char in jewels.split('') ){
