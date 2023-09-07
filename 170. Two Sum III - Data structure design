@@ -1,3 +1,38 @@
+// Runtime 164 ms Beats 82.14% || Memory 53.7 MB Beats 62.50%
+
+class TwoSum{
+    constructor(){
+        this.nums = new Set()
+        this.counts = new Map()
+    }
+    add(val){
+        if( this.counts.has(val) ){
+            this.counts.set(val, this.counts.get(val) + 1)
+        } else {
+            this.counts.set(val, 1)
+            this.nums.add(val)
+        }
+    }
+
+    find(target){
+        for( let num of this.nums ){
+            let complement = target - num
+            if( num == complement ){
+                if( this.counts.get(num) > 1 ){
+                    return true
+                }
+            } else {
+                if( this.nums.has(complement) ){
+                    return true
+                }
+            }
+        }
+        return false
+    }
+
+
+
+
 // Runtime 4435 ms Beats 5.36% || Memory 63.1 MB Beats 33.93%
 
 class TwoSum{
