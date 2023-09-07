@@ -1,0 +1,35 @@
+// Runtime 4435 ms Beats 5.36% || Memory 63.1 MB Beats 33.93%
+
+class TwoSum{
+    constructor(){
+        this.map = new Map()
+    }
+    add(val){
+        if( this.map.has(val) ){
+            this.map.set(val, this.map.get(val) + 1)
+        } else {
+            this.map.set(val, 1)
+        }
+    }
+
+    find(target){
+        
+        for( let [num, count] of this.map ){
+            console.log(num,count)
+            let complement = target - num
+            if( this.map.has(complement) ){
+                if( complement == num ){
+                    if( count < 2 ){
+                        continue
+                    } else {
+                        return true
+                    }
+                }
+                if( complement != num ){
+                    return true
+                }
+            }
+        }
+        return false
+    }
+}
