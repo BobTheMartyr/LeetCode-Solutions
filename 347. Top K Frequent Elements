@@ -1,3 +1,25 @@
+// Runtime 58 ms Beats 92.32% || Memory 45.1 MB Beats 63.82%
+// Hash Map Explore Card
+
+var topKFrequent = function(nums, k) {
+    let count = new Map()
+    for( el of nums ){
+        if( count.has(el) ){
+            count.set(el, count.get(el) + 1)
+        } else {
+            count.set(el, 1)
+        }
+    }
+    let newArr = Array.from(count.entries()).sort((a,b) => b[1] - a[1])
+    let result = []
+    for( let i = 0; i < k; i++ ){
+        result.push(newArr[i][0])
+    }
+    return result
+}
+
+***************************************
+
 // Runtime 76 ms Beats 61.17% || Memory 45.3 MB Beats 56.59%
 
 var topKFrequent = function(nums, k){
