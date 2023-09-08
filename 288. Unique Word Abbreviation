@@ -1,0 +1,34 @@
+// Runtime 122 ms Beats 60% || Memory 63.7 MB Beats 70%
+
+class ValidWordAbbr{
+    constructor(words){
+        this.dict = new Map()
+        for( let i = 0; i < words.length; i++ ){
+            let abbr = this._abbr(words[i])
+            if( this.dict.has(abbr) ){
+                if( !this.dict.get(abbr).includes(words[i]) ){
+                    this.dict.get(abbr).push(words[i])
+                }
+            } else {
+                this.dict.set(abbr, [words[i]])
+            }
+        }
+    }
+
+    isUnique(word){
+        let abbr = this._abbr(word)
+        if( this.dict.has( abbr ) ){
+            if( this.dict.get(abbr).length > 1 ){
+                return false 
+            } else {
+                return this.dict.get(abbr).includes(word)
+            }
+        } else return true
+    }
+
+    _abbr(word){
+        if( word.length > 2 ){
+            return word[0] + (word.length - 2) + word[word.length - 1]
+        } else return word
+    }
+}
