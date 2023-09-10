@@ -1,0 +1,15 @@
+// Runtime 57 ms Beats 84.31% || Memory 42.7 MB Beats 61.54%
+
+var isIsomorphic = function( s,t ){
+    let map = new Map()
+    for( let i = 0; i < s.length; i++ ){
+        if( map.has( s[i]) ){
+            if( map.get(s[i]) != t[i] ){
+                return false
+            }
+        } else {
+            map.set(s[i], t[i] )
+        }
+    }
+    return new Set(map.values()).size == map.size
+} 
