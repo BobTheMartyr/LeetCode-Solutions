@@ -1,5 +1,23 @@
-// Runtime 287 ms Beats 21.30% ||  Memory 51 MB Beats 11.93%
+// Runtime 68 ms Beats 85.27% || Memory 44.9 MB Beats 90.79%
 
+var lengthOfLongestSubstring = function(s){
+    let max = 0
+    let map = new Map()
+    for( let i = 0, j = 0; j < s.length; j++ ){
+        // Checking each letter
+        if( map.has(s[j]) ){                         //If seen letter before
+            i = Math.max(i, map.get(s[j]) + 1)       //Moves i to right of last time seen
+        }
+        map.set(s[j], j)                             //Updates letter's position/creates letter in map
+        max = Math.max(max, (j - i) + 1)             //If the distance between i and j is greater than it was last time i was moved, the new maxmimum distance is updated
+    }
+    return max
+}
+
+
+
+
+// Runtime 287 ms Beats 21.30% ||  Memory 51 MB Beats 11.93%
 
 var lengthOfLongestSubstring = function(s) {
 
