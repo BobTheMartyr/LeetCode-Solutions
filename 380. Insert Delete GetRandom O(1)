@@ -1,3 +1,35 @@
+// Runtime 317 ms Beats 78.81% || Memory 101.1 MB Beats 95.27%
+
+class RandomizedSet{
+    constructor(){
+        this.set = new Set()
+        this.arr = []
+    }
+    insert(val){
+        if( this.set.has( val) ){
+            return false
+        } else {
+            this.set.add(val)
+            this.arr.push(val)
+            return true
+        }
+    }
+    remove(val){
+        if( this.set.has(val) ){
+            this.set.delete(val)
+            this.arr.splice(this.arr.indexOf(val), 1)
+            return true
+        } else {
+            return false
+        }
+    }
+    getRandom(){
+        let random = Math.floor(Math.random() * this.set.size)
+        return this.arr[random]
+    }
+}
+
+
 // Runtime 385 ms Beats 38.70% || Memory 116.8 MB Beats 26.53%
 
 class RandomizedSet{
