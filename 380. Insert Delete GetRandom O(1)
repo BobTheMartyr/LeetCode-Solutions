@@ -1,0 +1,26 @@
+// Runtime 385 ms Beats 38.70% || Memory 116.8 MB Beats 26.53%
+
+class RandomizedSet{
+    constructor(){
+        this.set = new Set()
+    }
+    insert(val){
+        if( this.set.has( val) ){
+            return false
+        } else {
+            this.set.add(val)
+            return true
+        }
+    }
+    remove(val){
+        if( this.set.has(val) ){
+            this.set.delete(val)
+            return true
+        } else {
+            return false
+        }
+    }
+    getRandom(){
+        return Array.from(this.set)[Math.floor(Math.random() * this.set.size)]
+    }
+}
