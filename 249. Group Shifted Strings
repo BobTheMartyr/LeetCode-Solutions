@@ -1,0 +1,25 @@
+// Runtime 43 ms Beats 98.8% || Memory 44.2 MB Beats 76.92%
+
+var groupStrings = function(strings) {
+
+    const alphaLength = 26
+    // Create a string joined by the distances between letters
+    const getHash = str => {
+        let distances = []
+        for( let i = 1; i < str.length; i++ ){
+            let distance = (str.charCodeAt(i) - str.charCodeAt(i - 1) + alphaLength) % alphaLength
+            distances.push(distance)
+        }
+        return distances.join('_')
+    }
+
+    const resultMap = new Map()
+    for( let string of strings ){
+        const hash = getHash(string)
+        if( !resultMap.has(hash) ){
+            resultMap.set(hash, [])
+        }
+        resultMap.get(hash).push(string)
+    }
+    return [...resultMap.values()]
+};
