@@ -1,0 +1,8 @@
+Runtime 44 ms Beats 93.72% || Memory 42.2 MB Beats 27.75%
+
+var merge = function(nums1, m, nums2, n) {
+    for( let i = m; i < nums1.length; i++ ){
+        nums1[i] = nums2.pop()
+    }
+    nums1.sort((a,b) => a - b)
+};
