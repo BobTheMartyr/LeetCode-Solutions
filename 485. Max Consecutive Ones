@@ -1,0 +1,14 @@
+// Runtime 51 ms Beats 93.76% || Memory 44.5 MB Beats 60.14%
+
+var findMaxConsecutiveOnes = function(nums) {
+    let max = 0, temp = 0
+    for( let i = 0; i < nums.length; i++ ){
+        if( nums[i] == 1 ){
+            temp += 1
+            max = Math.max(temp, max)
+        } else {
+            temp = 0
+        }
+    }
+    return max
+};
