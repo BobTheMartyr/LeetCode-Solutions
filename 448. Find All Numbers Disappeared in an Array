@@ -1,0 +1,15 @@
+// Runtime 80 ms Beats 86.87% || Memory 52.9 MB Beats 31.82%
+
+var findDisappearedNumbers = function(nums){
+    let set = new Set()
+    for( let i = 0; i < nums.length; i++ ){
+        set.add(nums[i])
+    }
+    let res = []
+    for( let i = 1; i <= nums.length; i++ ){
+        if( !set.has(i) ){
+            res.push(i)
+        }
+    }
+    return res
+}
