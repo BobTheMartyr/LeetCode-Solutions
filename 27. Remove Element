@@ -1,3 +1,18 @@
+// Runtime 52 ms Beats 62.48% || Memory 41.7 MB Beats 80.74%
+
+var removeElement = function(nums, val){
+    let count = 0
+    for( let i = 0; i < nums.length; i++ ){
+        if( nums[i] != val ){
+            nums[count] = nums[i]
+            count++
+        }
+    }
+    return count
+}
+
+******************************
+
 // Runtime 56 ms Beats 74.70% || Memory 41.4 MB Beats 93.81%
 
 var removeElement = function( nums, val ){
