@@ -1,0 +1,9 @@
+// Runtime 60 ms Beats 79% || Memory 50.7 MB Beats 29.33%
+
+String.prototype.replicate = function(times) {
+    let res = ''
+    for( let i = 0; i < times; i++ ){
+        res += this
+    }
+    return res
+}
