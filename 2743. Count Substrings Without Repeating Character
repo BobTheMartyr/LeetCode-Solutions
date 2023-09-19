@@ -1,0 +1,16 @@
+// Runtime 154 ms Beats 66.67% || Memory 48.3 MB Beats 50%
+
+var numberOfSpecialSubstrings = function(s){
+    let count = 0
+    let left = 0
+    let charMap = new Map()
+    for( let right = 0; right < s.length; right++ ){
+        let char = s[right]
+        if( charMap.has(char) ){
+            left = Math.max(left, charMap.get(char) + 1)
+        }
+        charMap.set(char, right)
+        count += (right - left + 1)
+    }
+    return count
+}
