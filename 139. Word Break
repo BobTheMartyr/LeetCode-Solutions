@@ -1,0 +1,46 @@
+// Runtime 61 ms Beats 43.38% || Memory 45 MB Beats 11.13%
+// First encounter of a trie
+
+class TrieNode{
+    constructor(){
+        this.isWord = false
+        this.children = new Map()
+    }
+}
+
+
+var wordBreak = function(s, wordDict) {
+    let root = new TrieNode()
+
+    //build the trie out of words from the dict
+    for( let word of wordDict ){
+        let curr = root
+        for( let c of word ){
+            if( !curr.children.has(c) ){
+                curr.children.set(c, new TrieNode() )
+            }
+            curr = curr.children.get(c)
+        }
+        curr.isWord = true
+    }
+    
+    const dp = new Array(s.length).fill(false)
+
+    for( let i = 0; i < s.length; i++ ){
+        if( i === 0 || dp[i - 1] ){
+            let curr = root
+            for( let j = i; j < s.length; j++ ){
+                const c = s.charAt(j)
+                if( !curr.children.has(c) ){
+                    //no words exist
+                    break
+                }
+                curr = curr.children.get(c)
+                if( curr.isWord ){
+                    dp[j] = true
+                }
+            }
+        }
+    }
+    return dp[s.length - 1]
+};
