@@ -1,0 +1,10 @@
+// Runtime 50 ms Beats 50.32% || Memory 41.8 MB Beats 43.55%
+
+function* factorial(n) {
+    if( n == 0 ) yield 1
+    let fact = 1
+    for( let i = 1; i <= n; i++ ){
+        fact *= i
+        yield fact
+    }
+};
