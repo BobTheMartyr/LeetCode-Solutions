@@ -1,0 +1,41 @@
+// Runtime 53 ms Beats 57.58% || Memory 43.2 MB Beats 63.64%
+
+class TrieNode{
+    constructor(){
+        this.children = new Map()
+        this.score = 0
+    }
+}
+
+class MapSum{
+    constructor(){
+        this.root = new TrieNode()
+        this.map = new Map()
+    }
+
+    insert(key, val){
+        let diff = val - (this.map.get(key) || 0)
+        this.map.set(key, val)
+        let curr = this.root
+        curr.score += diff
+
+        for( let c of key ){
+            if( !curr.children.has(c) ){
+                curr.children.set(c, new TrieNode())
+            }
+            curr = curr.children.get(c)
+            curr.score += diff
+        }
+    }
+
+    sum(prefix){
+        let curr = this.root
+        for( let c of prefix ){
+            curr = curr.children.get(c)
+            if( !curr ){
+                return 0
+            }
+        }
+        return curr.score
+    }
+}
