@@ -1,0 +1,57 @@
+// Runtime 116 ms Beats 80.28% || Memory 71.8 MB Beats 16.20%
+
+var replaceWords = function(dictionary, sentence) {
+    let dict = new Trie()
+    for( let word of dictionary ){
+        dict.insert(word)
+    }
+    sentence = sentence.split(' ')
+    for( let word in sentence ){
+        let temp = dict.prefix(sentence[word])
+        if( temp ){
+            sentence[word] = temp
+        }
+    }
+    return sentence.join(' ')
+    
+};
+
+class TrieNode{
+    constructor(){
+        this.children = new Map()
+    }
+}
+
+class Trie{
+    constructor(){
+        this.root = new TrieNode()
+    }
+
+    insert(word){
+        let curr = this.root
+        for( let c of word ){
+            if( !curr.children.has(c) ){
+                curr.children.set(c, new TrieNode())
+            }
+            curr = curr.children.get(c)
+        }
+        curr.children.set("isWord", true)
+    }
+
+    prefix(pre){
+
+        let curr = this.root
+        let result = ''
+
+        for( let c of pre ){
+            if( !curr ){
+                continue
+            }
+            if( curr.children.has('isWord') ){
+                return result
+            }
+            curr = curr.children.get(c)
+            result += c
+        }
+    }
+}
