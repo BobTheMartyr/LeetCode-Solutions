@@ -1,0 +1,51 @@
+// Runtime 833 ms Beats 37.4% || Memory 156.1 MB Beats 24.66%
+
+class TrieNode{
+    constructor(){
+        this.children = new Map()
+        this.isWord = false
+    }
+}
+
+class WordDictionary{
+    constructor(){
+        this.root = new TrieNode()
+    }
+
+    addWord(word){
+        let curr = this.root
+
+        for( let c of word ){
+            if( !curr.children.has(c) ){
+                curr.children.set(c, new TrieNode())
+            }
+            curr = curr.children.get(c)
+        }
+
+        curr.isWord = true
+    }
+
+    search(word){
+        let curr = this.root
+        return this._searchInNode(word, curr)
+    }
+
+    _searchInNode(word, curr){
+        for( let i = 0; i < word.length; i++ ){
+            let ch = word.charAt(i)
+            if( !curr.children.has(ch) ){
+                if( ch == '.' ){
+                    for( let [x, child] of curr.children.entries() ){
+                        if( this._searchInNode(word.substring(i + 1),child) ){
+                            return true
+                        }
+                    }
+                }
+                return false
+            } else {
+                curr = curr.children.get(ch)
+            }
+        }
+        return curr.isWord
+    }
+}
