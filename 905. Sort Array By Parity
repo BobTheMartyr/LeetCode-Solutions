@@ -1,3 +1,11 @@
+// Runtime 57 ms Beats 91.54% || Memory 43.8 MB Beats 94.43%
+
+var sortArrayByParity = function( nums ){
+    return nums.sort((a,b) => (a%2) - (b%2))
+}
+
+ ********
+
 //  Runtime 80 ms Beats 42.82% || Memory 44.9 MB Beats 26.98%
 
 // Done easily with filters
