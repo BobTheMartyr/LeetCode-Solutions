@@ -1,0 +1,36 @@
+// Runtime 70 ms Beats 72.30% || Memory 46.7 MB Beats 19.67%
+
+var shipWithinDays = function(weights, days) {
+    let totalLoad = 0
+    let maxLoad = Math.max(...weights)
+
+    for( let weight of weights ){
+        totalLoad += weight
+    }
+
+    let left = maxLoad
+    let right = totalLoad
+
+    while( left < right ){
+        let mid = left + Math.floor((right - left) /2)
+        if( findDays(weights, mid, days) ){
+            right = mid
+        } else {
+            left = mid + 1
+        }
+    }
+    return left
+};
+
+var findDays = function( weights, c, days ){
+    let daysNeeded = 1, currentLoad = 0
+
+    for( let weight of weights ){
+        currentLoad += weight
+        if( currentLoad > c ){
+            daysNeeded++
+            currentLoad = weight
+        }
+    }
+    return daysNeeded <= days
+}
