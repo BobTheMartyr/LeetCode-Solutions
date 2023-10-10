@@ -1,0 +1,16 @@
+Runtime 47 ms Beats 85.67% || Memory 41.8 MB Beats 59.99%
+
+var isSubsequence = function(s, t) {
+    let left = 0
+    let count = 0
+    for( let i = 0; i < s.length; i++ ){
+        for( let j = left; j < t.length; j++ ){
+            if( t[j] == s[i] ){
+                left = j + 1
+                count++
+                break
+            }
+        }
+    }
+    return count == s.length
+};
