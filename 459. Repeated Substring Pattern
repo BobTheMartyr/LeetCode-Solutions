@@ -1,0 +1,20 @@
+// Runtime 97 ms Beats 18.89% || Memory 50.5 MB Beats 5.10%
+
+var repeatedSubstringPattern = function(s) {
+    let div = 2
+
+    const recur = (word, div) => {
+        if( div > word.length ){
+            return false
+        }
+
+        let temp = word.slice(0, Math.floor(word.length / div))
+        if( temp.repeat(div) == word ){
+            return true
+        } else {
+            return recur(word, div + 1)
+        }
+    }
+
+    return recur(s, div)
+};
