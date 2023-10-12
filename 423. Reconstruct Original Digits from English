@@ -1,0 +1,31 @@
+// Runtime 65 ms Beats 88.64% || Memory 47.8 MB Beats 20.45%
+
+var originalDigits = function(s) {
+    let letterMap = new Array(26).fill(0)
+    for( let char of s ){
+        letterMap[char.charCodeAt(0) - 'a'.charCodeAt(0)]++
+    }
+
+    let newMap = new Array(10).fill(0)
+    newMap[0] = letterMap['z'.charCodeAt(0) - 'a'.charCodeAt(0)]
+    newMap[2] = letterMap['w'.charCodeAt(0) - 'a'.charCodeAt(0)]
+    newMap[4] = letterMap['u'.charCodeAt(0) - 'a'.charCodeAt(0)]
+    newMap[6] = letterMap['x'.charCodeAt(0) - 'a'.charCodeAt(0)]
+    newMap[8] = letterMap['g'.charCodeAt(0) - 'a'.charCodeAt(0)]
+    newMap[3] = letterMap['h'.charCodeAt(0) - 'a'.charCodeAt(0)] - newMap[8]
+    newMap[5] = letterMap['f'.charCodeAt(0) - 'a'.charCodeAt(0)] - newMap[4]
+    newMap[7] = letterMap['s'.charCodeAt(0) - 'a'.charCodeAt(0)] - newMap[6]
+    newMap[9] = letterMap['i'.charCodeAt(0) - 'a'.charCodeAt(0)] - newMap[5] - newMap[6] - newMap[8]
+    newMap[1] = letterMap['n'.charCodeAt(0) - 'a'.charCodeAt(0)] - newMap[7] - (2 * newMap[9])
+
+    let result = ''
+    for( let i = 0; i < newMap.length; i++ ){
+        if( newMap[i] != 0 ){
+            while( newMap[i] != 0 ){
+                result += i
+                newMap[i]--
+            }
+        }
+    }
+    return result
+};
