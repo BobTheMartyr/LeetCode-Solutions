@@ -1,0 +1,12 @@
+// Runtime 94 ms Beats 83.83% || Memory 47.5 MB Beats 44.35%
+
+var arrayPairSum = function(nums) {
+    nums.sort((a,b) => a - b)
+    let maxSum = 0
+    for( let i = 0; i < nums.length; i++ ){
+        if( i % 2 === 0 ){
+            maxSum += nums[i]
+        }
+    }
+    return maxSum
+};
