@@ -1,0 +1,25 @@
+// Runtime 39 ms Beats 98.18% || Memory 41.9 MB Beats 47.78%
+
+var expect = function(val) {
+    return new Compare(val)
+};
+
+class Compare{
+    constructor(value){
+        this.value = value
+    }
+    toBe(val){
+        if( val === this.value ){
+            return true
+        } else {
+            throw new Error("Not Equal")
+        }
+    }
+    notToBe(val){
+        if( val !== this.value ){
+            return true
+        } else {
+            throw new Error("Equal")
+        }
+    }
+}
