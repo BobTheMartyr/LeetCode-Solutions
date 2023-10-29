@@ -1,3 +1,22 @@
+// Runtime 54 ms Beats 66.74% || Memory 42.7 MB Beats 84.15%
+
+var uniqueMorseRepresentations = function(words){
+    let morseAlphabet =  [".-","-...","-.-.","-..",".","..-.","--.","....","..",".---","-.-",".-..","--","-.","---",".--.","--.-",".-.","...","-","..-","...-",".--","-..-","-.--","--.."]
+
+    let unique = new Set()
+
+    for( let i = 0; i < words.length; i++ ){
+        let word = ''
+        for( let j = 0; j < words[i].length; j++ ){
+            word += morseAlphabet[words[i].charCodeAt(j) - 97]
+        }
+        unique.add(word)
+    }
+    return unique.size
+}
+
+*******************
+
 var uniqueMorseRepresentations = function(words) {
     
     let alphabet = {}
