@@ -1,0 +1,10 @@
+// Runtime 54 ms Beats 80.49% || Memory 46.5 MB Beats 12.20%
+
+var printLinkedListInReverse = function(head){
+    var recur = node => {
+        if(!node)return
+        recur(node.getNext())
+        node.printValue()
+    }
+    recur(head)
+}
