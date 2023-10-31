@@ -1,0 +1,13 @@
+// Runtime 99 ms Beats 40.54% || Memory 55.3 MB Beats 91.22%
+
+var createObject = function(keysArr, valuesArr) {
+    let obj = {}
+    for( let i = 0; i < keysArr.length; i++ ){
+        if( !Object.keys(obj).includes(String(keysArr[i])) ){
+            obj[String(keysArr[i])] = valuesArr[i]
+        } else {
+            continue
+        }
+    }
+    return obj
+};
